@@ -4,37 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shields!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .video-container {
+            display: none;
+        }
+        .password-container {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Shields!</h1>
-    <h2>S1!</h2>
-    <br>
-    E1
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/_7NbCiph4Ms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <br>
-    E2
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/xqV_O0dl3TE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <br>
-    E3
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/DnNGLfNE24U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <br>
-    E4
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/M-s4M2cY9yE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <br>
-    E5
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/yQCVurfmpj4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <br>
-    Full!
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/TYqEIWyqoOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <h2>S2!</h2>
-    <br>
-    E0
-    <br>
-    <iframe width="1000" height="700" src="https://www.youtube.com/embed/HJyw49ABDvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="password-container">
+        <h2>Please enter the password to view the videos:</h2>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div class="video-container" id="video-container">
+        <h1>Shields!</h1>
+        <h2>S1!</h2>
+        <br>
+        E1
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/_7NbCiph4Ms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        E2
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/xqV_O0dl3TE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        E3
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/DnNGLfNE24U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        E4
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/M-s4M2cY9yE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        E5
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/yQCVurfmpj4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        Full!
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/TYqEIWyqoOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2>S2!</h2>
+        <br>
+        E0
+        <br>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/HJyw49ABDvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const correctPassword = "Def"; // The correct password is "Def"
+
+        function checkPassword() {
+            const enteredPassword = document.getElementById("password").value;
+
+            if (enteredPassword === correctPassword) {
+                // Show the videos and hide the password input
+                document.getElementById("video-container").style.display = "block";
+                document.querySelector(".password-container").style.display = "none";
+            } else {
+                alert("Incorrect password. Try again.");
+            }
+        }
+    </script>
 </body>
+</html>
