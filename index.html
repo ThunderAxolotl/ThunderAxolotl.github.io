@@ -13,37 +13,69 @@
             background-color: #8B0000; /* Dark red background */
             color: white; /* White text color */
         }
-        .video-container {
-            display: block;
-        }
-        h1, h2 {
+
+        h1, h2, h3 {
             margin: 20px 0;
         }
-        iframe {
-            margin: 10px 0;
+
+        /* Make Season labels bigger */
+        .season-label {
+            font-size: 48px; /* Larger font size for season labels */
+            font-weight: bold;
+        }
+
+        /* Navbar for Season buttons under each season label */
+        .season-buttons {
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            margin: 20px 0;
+        }
+
+        .season-button {
+            background-color: white;
+            color: black;
+            padding: 20px 40px; /* Increased padding for larger buttons */
+            font-size: 24px; /* Larger font size for buttons */
+            border: none;
+            cursor: pointer;
+            border-radius: 10px; /* Slightly rounded corners */
+            margin: 10px;
+            display: inline-block;
+            width: 250px; /* Fixed width for consistency */
+            text-align: center;
+        }
+
+        .season-button:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <h1>Shields!</h1>
-        <h2>S1!</h2>
-       <h3>E1</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/_7NbCiph4Ms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>E2</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/xqV_O0dl3TE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>E3</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/DnNGLfNE24U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>E4</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/M-s4M2cY9yE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>E5</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/yQCVurfmpj4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>Full!</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/TYqEIWyqoOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h2>S2!</h2>
-        <h3>E0</h3> 
-        <iframe width="1250" height="700" src="https://www.youtube.com/embed/HJyw49ABDvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h1> Note: This website will be completely redone with a good design, the videos are just located here for now!</h1>
+
+    <!-- Season 1 Section -->
+    <div class="season-buttons">
+        <h2 class="season-label">Season 1</h2>
+        <div class="button-container">
+            <a href="season1info.html"><button class="season-button">Season Info</button></a>
+
+            <a href="s1e1.html"><button class="season-button">Episode 1</button></a>
+            <a href="s1e2.html"><button class="season-button">Episode 2</button></a>
+            <a href="s1e3.html"><button class="season-button">Episode 3</button></a>
+            <a href="s1e4.html"><button class="season-button">Episode 4</button></a>
+            <a href="s1e5.html"><button class="season-button">Episode 5</button></a>
+        </div>  
     </div>
+
+    <!-- Season 2 Section -->
+    <div class="season-buttons">
+        <h2 class="season-label">Season 2</h2>
+        <div class="button-container">
+            <a href="S2e0.html"><button class="season-button">Episode 0</button></a>
+            <a href="index.html"><button class="season-button">Coming Soon</button></a>
+        </div>
+    </div>
+
 </body>
 </html>

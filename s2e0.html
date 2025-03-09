@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <title>S2 E0: A New Start</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 10px;
+            background-color: #8B0000;
+            color: white;
+        }
+        .video-container {
+            display: block;
+            margin-bottom: 20px;
+        }
+        h1, h2, h3 {
+            margin: 20px 0;
+        }
+        iframe {
+            margin: 10px 0;
+        }
+        .description {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .more-info {
+            margin-top: 20px;
+        }
+        .info-box {
+            display: none;
+            color: white;
+            font-size: 22px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        .toggle-button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleInfo() {
+            var infoBox = document.getElementById("info-box");
+            if (infoBox.style.display === "none") {
+                infoBox.style.display = "block";
+            } else {
+                infoBox.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>S2 E0: A New Start</h1>
+
+    <!-- Video -->
+    <div class="video-container">
+        <iframe width="1250" height="700" src="https://www.youtube.com/embed/HJyw49ABDvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Episode Description -->
+    <div class="description">
+        <p><strong>Episode 0:</strong> What happened! One minute was with Bela and now I am in a 2d world. Find out in season 2 what happened and the world of celeste as a whole!</p>
+    </div>
+
+   
+</body>
+</html>

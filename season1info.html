@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <title>S1: Limbo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 20px;
+            color: black;
+            background: linear-gradient(45deg, 
+                red, 
+                orange, 
+                lime, 
+                skyblue, 
+                deepskyblue, 
+                purple, 
+                #98BF64,  /* Weird green-orange */
+                pink);
+            background-size: 100% 100%;  /* Reduced the background size */
+            background-attachment: fixed;  /* Keep the background fixed during scroll */
+            background-position: center center;
+            height: 100%;
+            margin: 0;
+            transition: background-position 0.5s ease-out; /* Smooth transition */
+        }
+
+        h1 {
+            font-size: 70px; /* Make the h1 tags larger */
+            margin: 20px 0;
+        }
+
+        .video-container {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 50px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.5); /* Light semi-transparent background */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .more-info {
+            margin-top: 20px;
+        }
+
+        .info-box {
+            display: none;
+            color: white;
+            font-size: 30px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .toggle-button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleInfo() {
+            var infoBox = document.getElementById("info-box");
+            if (infoBox.style.display === "none") {
+                infoBox.style.display = "block";
+            } else {
+                infoBox.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>S1: Limbo</h1>
+    <div class="description">
+        <p><strong>Season 1:</strong> Welcome to Limbo! The first season of shields. <br> In this season of Shields, the characters will go across Limbo, trying to escape and eventually finish the level. <br> Will the villains of the story stop them? Or will the friends made along the way win? <br> Find out now in Shields!</p>
+    </div>
+    <!-- Video -->
+    <h1>Full Video!</h1>
+    <div class="video-container">
+        <iframe width="1250" height="700" src="https://www.youtube.com/embed/TYqEIWyqoOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+</body>
+</html>
