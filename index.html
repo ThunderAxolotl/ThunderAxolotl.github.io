@@ -9,23 +9,22 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding-top: 50px;
+            background-color: #8B0000; /* Dark red background */
+            color: white; /* White text color */
         }
         .video-container {
-            display: none;
-        }
-        .password-container {
             display: block;
+        }
+        h1, h2 {
+            margin: 20px 0;
+        }
+        iframe {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <div class="password-container">
-        <h2>Please enter the password to view the videos:</h2>
-        <input type="password" id="password" placeholder="Enter password">
-        <button onclick="checkPassword()">Submit</button>
-    </div>
-
-    <div class="video-container" id="video-container">
+    <div class="video-container">
         <h1>Shields!</h1>
         <h2>S1!</h2>
         <br>
@@ -58,23 +57,7 @@
         <br>
         <iframe width="1000" height="700" src="https://www.youtube.com/embed/HJyw49ABDvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <br>
-        <h1> Note: This website will be completly redone with a good design, the vids are just located here for now!</h1>
+        <h1> Note: This website will be completely redone with a good design, the videos are just located here for now!</h1>
     </div>
-
-    <script>
-        const correctPassword = "Def"; // The correct password is "Def"
-
-        function checkPassword() {
-            const enteredPassword = document.getElementById("password").value;
-
-            if (enteredPassword === correctPassword) {
-                // Show the videos and hide the password input
-                document.getElementById("video-container").style.display = "block";
-                document.querySelector(".password-container").style.display = "none";
-            } else {
-                alert("Incorrect password. Try again.");
-            }
-        }
-    </script>
 </body>
 </html>
