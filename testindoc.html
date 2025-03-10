@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <title>S1 E1: The Return of Limbo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 10px;
+            background-image: url('BGS/S1E1.png'); /* Path to background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Header with background box */
+        h1 {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        /* Button to open video */
+        .watch-button {
+            background-color: white;
+            color: black;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .watch-button:hover {
+            background-color: #ddd;
+        }
+
+        /* Text Box for the Description */
+        .text-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            width: fit-content;
+            max-width: 80%;
+        }
+
+        .description {
+            font-size: 22px;
+        }
+
+        /* Fullscreen Video Overlay */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Video Container */
+        .video-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border-radius: 10px;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-button:hover {
+            background: darkred;
+        }
+    </style>
+    <script>
+        function openVideo() {
+            document.getElementById("video-overlay").style.display = "flex";
+        }
+
+        function closeVideo() {
+            document.getElementById("video-overlay").style.display = "none";
+            var iframe = document.getElementById("video-frame");
+            iframe.src = iframe.src; // Stops the video when closing
+        }
+    </script>
+</head>
+<body>
+
+    <h1>S1 E1: The Return of Limbo</h1>
+
+    <!-- Watch Button -->
+    <button class="watch-button" onclick="openVideo()">Watch Episode</button>
+
+    <!-- Episode Description -->
+    <div class="text-container">
+        <div class="description">
+            <p><strong>Episode 1:</strong> Limbo, the ultimate Geometry Dash level. But the keys seem a little... different this time. Can you follow the keys, with this episode introducing Limbo!</p>
+        </div>
+    </div>
+
+    <!-- Fullscreen Video Overlay -->
+    <div id="video-overlay" class="video-overlay">
+        <div class="video-content">
+            <button class="close-button" onclick="closeVideo()">✖</button>
+            <iframe id="video-frame" src="https://www.youtube.com/embed/_7NbCiph4Ms?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
