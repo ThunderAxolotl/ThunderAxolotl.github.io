@@ -15,12 +15,12 @@
             background-position: center;
             background-repeat: no-repeat;
             color: white;
-            height: 100vh;
+            min-height: 100vh; /* Allow the content to exceed the viewport height */
             display: flex;
             flex-direction: column;
             justify-content: center; /* Vertically center the content */
             align-items: center; /* Horizontally center the content */
-            overflow: hidden; /* Prevent overflow issues */
+            overflow: auto; /* Allow scrolling */
         }
 
         /* Header with background box */
@@ -120,7 +120,7 @@
         /* For small screens (like mobile) */
         @media (max-width: 768px) {
             body {
-                height: auto; /* Allow body to adjust height based on content */
+                min-height: auto; /* Allow content to extend beyond the viewport height */
                 padding-top: 20px; /* Add a little more top padding on small screens */
             }
 
