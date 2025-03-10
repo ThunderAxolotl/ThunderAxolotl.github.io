@@ -50,6 +50,16 @@
         .season-button:hover {
             background-color: #ddd;
         }
+
+        #countdown {
+            font-size: 40px;
+            color: white;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            width: 300px;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +86,42 @@
             <a href="index.html"><button class="season-button">Coming Soon</button></a>
         </div>
     </div>
+    <br><br>
+    <h1>Announcement: The website has been updated and everything has been put in slots and made to look cool!</h1>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Countdown -->
+    <div id="countdown">Loading Countdown...</div>
+
+    <script>
+        // Set the target date for March 22, 2025 at 12:00 PM EST
+        var targetDate = new Date("March 22, 2025 12:00:00 GMT-0500").getTime();  // EST is GMT-5
+
+        // Update the countdown every 1 second
+        var countdownInterval = setInterval(function() {
+
+            // Get the current date and time
+            var now = new Date().getTime();
+
+            // Calculate the time remaining
+            var remainingTime = targetDate - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            var days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("countdown").innerHTML = 
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the countdown is over, display a message
+            if (remainingTime < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
