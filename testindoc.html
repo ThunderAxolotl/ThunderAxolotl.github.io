@@ -18,8 +18,9 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Adjust to start from top */
             align-items: center;
+            overflow: hidden; /* Prevent overflow issues */
         }
 
         /* Header with background box */
@@ -32,6 +33,7 @@
             width: 80%;
             max-width: 1000px;
             text-transform: uppercase;
+            box-sizing: border-box; /* Include padding and border in width calculation */
         }
 
         /* Button to open video */
@@ -54,15 +56,16 @@
 
         /* Text Box for the Description */
         .text-container {
-    background-color: rgba(0, 0, 0, 0.85);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: left;
-    width: fit-content;
-    max-width: 80%;
-    margin-top: 20px; /* Adjust this value to change the gap */
-    margin-bottom: 50px;
-}
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            width: fit-content;
+            max-width: 80%;
+            margin-top: 20px; /* Adjust this value to change the gap */
+            margin-bottom: 50px;
+        }
+
         .description {
             font-size: 38px; /* Larger font size for description */
             line-height: 1.5;
@@ -114,6 +117,28 @@
             background: darkred;
         }
 
+        /* For small screens (like mobile) */
+        @media (max-width: 768px) {
+            body {
+                height: auto; /* Allow body to adjust height based on content */
+                padding-top: 20px; /* Add a little more top padding on small screens */
+            }
+
+            h1 {
+                font-size: 36px; /* Reduce title font size on mobile */
+                padding: 20px; /* Reduce padding on mobile */
+                width: 90%; /* Make the title box width more responsive */
+            }
+
+            .watch-button {
+                padding: 20px 40px;
+                font-size: 30px;
+            }
+
+            .text-container {
+                margin-top: 15px; /* Reduced top margin on mobile */
+            }
+        }
     </style>
     <script>
       var videoSrc = "https://www.youtube.com/embed/_7NbCiph4Ms?autoplay=1";  // Store the original video source
