@@ -11,16 +11,36 @@
             text-align: center;
             padding-top: 10px;
             background-image: url('BGS/S1E1.png'); /* Path to background image */
-            background-size: cover; /* Ensure the image covers the whole screen */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Prevent repetition */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: white;
-            min-height: 100vh; /* Allow the content to exceed the viewport height */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically center the content */
-            align-items: center; /* Horizontally center the content */
-            overflow: auto; /* Allow scrolling */
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 1);
+            color: white;
+            border: none;
+            font-size: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            color: black;
         }
 
         /* Header with background box */
@@ -28,20 +48,20 @@
             background-color: rgba(0, 0, 0, 0.85);
             padding: 40px;
             border-radius: 15px;
-            font-size: 62px; /* Larger font size */
+            font-size: 62px;
             margin-bottom: 20px;
             width: 80%;
             max-width: 1000px;
             text-transform: uppercase;
-            box-sizing: border-box; /* Include padding and border in width calculation */
+            box-sizing: border-box;
         }
 
         /* Button to open video */
         .watch-button {
             background-color: white;
             color: black;
-            padding: 25px 50px; /* Larger button size */
-            font-size: 40px; /* Larger font size */
+            padding: 25px 50px;
+            font-size: 40px;
             font-weight: bold;
             border: none;
             cursor: pointer;
@@ -62,12 +82,12 @@
             text-align: left;
             width: fit-content;
             max-width: 80%;
-            margin-top: 20px; /* Adjust this value to change the gap */
+            margin-top: 20px;
             margin-bottom: 50px;
         }
 
         .description {
-            font-size: 38px; /* Larger font size for description */
+            font-size: 38px;
             line-height: 1.5;
         }
 
@@ -90,7 +110,7 @@
             position: relative;
             width: 90%;
             max-width: 1200px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Add shadow for visual depth */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
         }
 
         iframe {
@@ -107,7 +127,7 @@
             background: red;
             color: white;
             border: none;
-            font-size: 30px; /* Larger close button */
+            font-size: 30px;
             padding: 15px 20px;
             cursor: pointer;
             border-radius: 50%;
@@ -120,14 +140,14 @@
         /* For small screens (like mobile) */
         @media (max-width: 768px) {
             body {
-                min-height: auto; /* Allow content to extend beyond the viewport height */
-                padding-top: 20px; /* Add a little more top padding on small screens */
+                min-height: auto;
+                padding-top: 20px;
             }
 
             h1 {
-                font-size: 36px; /* Reduce title font size on mobile */
-                padding: 20px; /* Reduce padding on mobile */
-                width: 90%; /* Make the title box width more responsive */
+                font-size: 36px;
+                padding: 20px;
+                width: 90%;
             }
 
             .watch-button {
@@ -136,27 +156,41 @@
             }
 
             .text-container {
-                margin-top: 15px; /* Reduced top margin on mobile */
+                margin-top: 15px;
+            }
+
+            .back-button {
+                font-size: 24px;
+                padding: 8px 12px;
+                top: 10px;
+                right: 10px;
             }
         }
     </style>
     <script>
-        var videoSrc = "https://www.youtube.com/embed/_7NbCiph4Ms?autoplay=1";  // Store the original video source
+        var videoSrc = "https://www.youtube.com/embed/_7NbCiph4Ms?autoplay=1"; 
 
         function openVideo() {
             var iframe = document.getElementById("video-frame");
-            iframe.src = videoSrc;  // Restore the video source when opening
+            iframe.src = videoSrc;
             document.getElementById("video-overlay").style.display = "flex";
         }
 
         function closeVideo() {
             document.getElementById("video-overlay").style.display = "none";
             var iframe = document.getElementById("video-frame");
-            iframe.src = "";  // Stop the video when closing by removing the source
+            iframe.src = "";
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
         }
     </script>
 </head>
 <body>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">←</button>
 
     <h1>S1 E1: The Return of Limbo</h1>
 
