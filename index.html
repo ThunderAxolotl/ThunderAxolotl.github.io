@@ -18,6 +18,20 @@
             margin: 20px 0;
         }
 
+        /* Welcome Message */
+        #welcome-message {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Announcement Style */
+        #announcement {
+            font-size: 20px;
+            font-weight: bold;
+            color: yellow;
+        }
+
         /* Make Season labels bigger */
         .season-label {
             font-size: 48px; /* Larger font size for season labels */
@@ -51,16 +65,25 @@
             background-color: #ddd;
         }
 
-        /* Countdown Timer Box */
-        #countdown-box {
-            display: none; /* Initially hidden */
-            font-size: 40px;
-            color: white;
-            margin: 30px auto;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
+        /* Progress Bar (Initially Hidden) */
+        #progress-container {
+            display: none;
+            width: 15%;
+            background-color: #ddd;
             border-radius: 15px;
-            width: 300px;
+            margin: 20px auto;
+            padding: 5px;
+        }
+
+        #progress-bar {
+            width: 79%; /* Default progress (editable) */
+            height: 30px;
+            background-color: green;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
         }
 
         /* Password Box */
@@ -97,6 +120,17 @@
 </head>
 <body>
 
+    <!-- Welcome Message -->
+    <div id="welcome-message">
+        Welcome to Shields! Shields is all about pictures that I take of my friends, which I then edit to make them look funny. 
+        In Shields, expect many funny references to FCHS, specific students in the series, and many more things that are guaranteed to make you laugh! Hope you enjoy!!!
+    </div>
+
+    <!-- Announcements -->
+    <div id="announcement">
+        <h1>3/12/25: Added a welcome message and edited a few other things!</h1>
+    </div>
+<br><br><br>
     <!-- Season 1 Section -->
     <div class="season-buttons">
         <h2 class="season-label">Season 1 - Limbo</h2>
@@ -118,68 +152,39 @@
             <a href="def.html"><button class="season-button">Coming Soon</button></a>
         </div>
     </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-    <br><br>
-    <h1>Announcement: The website has been updated and everything has been put in slots and made to look cool!</h1>
-    <h1>Oh and also fixed some layout issues on mobile!</h1>
-    <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br>
-    <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br>
-    <!-- Password Input --> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br>
+    <!-- Password Input -->
     <div id="password-box">
         <input type="password" id="password-input" placeholder="Enter password">
         <button id="submit-password">Submit</button>
     </div>
 
-    <!-- Countdown Timer (Hidden Initially) -->
-    <div id="countdown-box">
-        <div id="countdown">Loading Countdown...</div>
+    <!-- Progress Bar (Locked Behind Password) -->
+    <div id="progress-container">
+        <div id="progress-bar">79%</div>
     </div>
 
     <script>
         // Set the correct passwords
-        var correctPassword = "def"; // Password for countdown
+        var correctPassword = "def"; // Password for progress bar
         var redirectPassword = "Testing1234"; // Password for redirection
-    
-        // Set the target date for March 22, 2025, at 12:00 PM EST
-        var targetDate = new Date("March 22, 2025 12:00:00 GMT-0500").getTime();  
-    
+
         // Function to check password and take action
         document.getElementById("submit-password").addEventListener("click", function() {
             var enteredPassword = document.getElementById("password-input").value;
-    
+
             if (enteredPassword === redirectPassword) {
                 window.location.href = "testindoc.html"; // Redirect to testindoc.html
             } else if (enteredPassword === correctPassword) {
                 document.getElementById("password-box").style.display = "none"; // Hide password input
-                document.getElementById("countdown-box").style.display = "block"; // Show countdown timer
-                startCountdown();
+                document.getElementById("progress-container").style.display = "block"; // Show progress bar
             } else {
                 alert("Incorrect password. Try again.");
             }
         });
-    
-        // Countdown function
-        function startCountdown() {
-            var countdownInterval = setInterval(function() {
-                var now = new Date().getTime();
-                var remainingTime = targetDate - now;
-    
-                var days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-    
-                if (remainingTime < 0) {
-                    clearInterval(countdownInterval);
-                    document.getElementById("countdown").innerHTML = "EPISODE TIME!";
-                } else {
-                    document.getElementById("countdown").innerHTML = 
-                        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-                }
-            }, 1000);
-        }
     </script>
-    
 
 </body>
 </html>
