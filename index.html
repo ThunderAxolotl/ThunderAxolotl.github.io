@@ -64,58 +64,6 @@
         .season-button:hover {
             background-color: #ddd;
         }
-
-        /* Progress Bar (Initially Hidden) */
-        #progress-container {
-            display: none;
-            width: 15%;
-            background-color: #ddd;
-            border-radius: 15px;
-            margin: 20px auto;
-            padding: 5px;
-        }
-
-        #progress-bar {
-            width: 79%; /* Default progress (editable) */
-            height: 30px;
-            background-color: green;
-            border-radius: 10px;
-            text-align: center;
-            line-height: 30px;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Password Box */
-        #password-box {
-            font-size: 20px;
-            margin: 30px auto;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            width: 320px;
-        }
-
-        #password-input {
-            font-size: 18px;
-            padding: 10px;
-            width: 200px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #submit-password {
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: white;
-            cursor: pointer;
-        }
-
-        #submit-password:hover {
-            background-color: #ddd;
-        }
     </style>
 </head>
 <body>
@@ -128,7 +76,7 @@
 
     <!-- Announcements -->
     <div id="announcement">
-        <h1>3/12/25: Added a welcome message and edited a few other things!</h1>
+        <h1>3/14/25: Pi!</h1>
     </div>
 <br><br><br>
     <!-- Season 1 Section -->
@@ -149,42 +97,16 @@
         <h2 class="season-label">Season 2</h2>
         <div class="button-container">
             <a href="s2e0.html"><button class="season-button">Episode 0</button></a>
-            <a href="def.html"><button class="season-button">Coming Soon</button></a>
+            <a href="s2e1.html"><button class="season-button">Coming Soon</button></a>
         </div>
     </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-    <!-- Password Input -->
-    <div id="password-box">
-        <input type="password" id="password-input" placeholder="Enter password">
-        <button id="submit-password">Submit</button>
+    <!-- Button to open the video -->
+    <div style="margin-top: 50px;">
+        <a href="https://drive.google.com/file/d/12vWYmAL7aE8AdyVEwHytyKC4GONYstiC/view?usp=sharing" target="_blank">
+            <button class="season-button">Watch Video</button>
+        </a>
     </div>
-
-    <!-- Progress Bar (Locked Behind Password) -->
-    <div id="progress-container">
-        <div id="progress-bar">79%</div>
-    </div>
-
-    <script>
-        // Set the correct passwords
-        var correctPassword = "def"; // Password for progress bar
-        var redirectPassword = "Testing1234"; // Password for redirection
-
-        // Function to check password and take action
-        document.getElementById("submit-password").addEventListener("click", function() {
-            var enteredPassword = document.getElementById("password-input").value;
-
-            if (enteredPassword === redirectPassword) {
-                window.location.href = "testindoc.html"; // Redirect to testindoc.html
-            } else if (enteredPassword === correctPassword) {
-                document.getElementById("password-box").style.display = "none"; // Hide password input
-                document.getElementById("progress-container").style.display = "block"; // Show progress bar
-            } else {
-                alert("Incorrect password. Try again.");
-            }
-        });
-    </script>
 
 </body>
 </html>
