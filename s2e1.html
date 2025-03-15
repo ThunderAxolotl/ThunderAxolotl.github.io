@@ -134,10 +134,34 @@
 
             if (userSequence.length === correctSequence.length) {
                 if (JSON.stringify(userSequence) === JSON.stringify(correctSequence)) {
-                    window.location.href = "SECRETzzy.html"; // Redirect if correct
+                    // Correct sequence, turn buttons green
+                    let buttons = document.querySelectorAll(".grid-button");
+                    buttons.forEach((button, i) => {
+                        if (correctSequence.includes(i)) {
+                            button.style.backgroundColor = "green";
+                        }
+                    });
+
+                    // Change behavior of the watch button
+                    document.querySelector(".watch-button").onclick = function() {
+                        window.location.href = "SECRETzzy.html"; // Redirect to the secret page
+                    };
                 } else {
-                    userSequence = []; // Reset if incorrect
-                    alert("Def");
+                    // Incorrect sequence, turn buttons red and hide after 5s
+                    let buttons = document.querySelectorAll(".grid-button");
+                    buttons.forEach(button => {
+                        button.style.backgroundColor = "red";
+                    });
+
+                    // Hide the grid after 5 seconds
+                    setTimeout(() => {
+                        buttons.forEach(button => {
+                            button.style.display = "none";  // Hide buttons
+                        });
+                    }, 5000);
+
+                    // Reset user sequence
+                    userSequence = [];
                 }
             }
         }
