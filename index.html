@@ -64,6 +64,15 @@
         .season-button:hover {
             background-color: #ddd;
         }
+
+        /* Hidden Button in bottom-right corner */
+        #hidden-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0; /* Make the button invisible */
+            z-index: 1000; /* Ensure it's clickable and above other content */
+        }
     </style>
 </head>
 <body>
@@ -76,7 +85,7 @@
 
     <!-- Announcements -->
     <div id="announcement">
-        <h1>3/14/25: Pi!</h1>
+        <h1>3/18/25: Def...</h1>
     </div>
 <br><br><br>
     <!-- Season 1 Section -->
@@ -97,15 +106,12 @@
         <h2 class="season-label">Season 2</h2>
         <div class="button-container">
             <a href="s2e0.html"><button class="season-button">Episode 0</button></a>
-            <a href="s2e1.html"><button class="season-button">Coming Soon</button></a>
         </div>
     </div>
 
-    <!-- Button to open the video -->
-    <div style="margin-top: 50px;">
-        <a href="https://drive.google.com/file/d/12vWYmAL7aE8AdyVEwHytyKC4GONYstiC/view?usp=sharing" target="_blank">
-            <button class="season-button">Watch Video</button>
-        </a>
+    <!-- Hidden Button -->
+    <div id="hidden-button">
+        <a href="devpage37.html"><button class="season-button">Secret Page</button></a>
     </div>
 
 </body>
