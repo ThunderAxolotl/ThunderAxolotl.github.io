@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season 2 Episode 1!</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <style>
+        body {
+            background-color: orange;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #countdown {
+            font-size: 10em;
+            margin-top: 20px;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 1);
+            color: white;
+            border: none;
+            font-size: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">←</button>
+    <h1>Season 2 Episode 1!</h1>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div id="countdown"></div>
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("April 1, 2025 11:00:00 EST").getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "The episode is live!";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
