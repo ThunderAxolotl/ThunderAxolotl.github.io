@@ -10,9 +10,16 @@
             background-color: orange;
             text-align: center;
             font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
         #countdown {
-            font-size: 10em;
+            font-size: 5em;
             margin-top: 20px;
         }
         .back-button {
@@ -32,37 +39,117 @@
             background: rgba(255, 255, 255, 1);
             color: black;
         }
+        .hidden-button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.1);
+            opacity: 0.5;
+            cursor: pointer;
+        }
+        #top-left { top: 0; left: 0; }
+        #bottom-left { bottom: 0; left: 0; }
+        #bottom-right { bottom: 0; right: 0; }
+        #hiddenCountdown {
+            display: none;
+            font-size: 4em;
+            color: red;
+            margin-top: 20px;
+        }
+        #redirectButton {
+            display: none;
+            background-color: black;
+            color: white;
+            padding: 2px 2px;
+            font-size: 0.1em;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #redirectButton:hover {
+            background-color: white;
+            color: black;
+        }
     </style>
 </head>
 <body>
     <button class="back-button" onclick="goBack()">←</button>
     <h1>Season 2 Episode 1!</h1>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="countdown">Click me for the countdown!</div>
+    <div id="hiddenCountdown"></div>
+    
+    <div id="top-left" class="hidden-button" onclick="unlockHiddenCountdown(1)"></div>
+    <div id="bottom-left" class="hidden-button" onclick="unlockHiddenCountdown(2)"></div>
+    <div id="bottom-right" class="hidden-button" onclick="unlockHiddenCountdown(3)"></div>
 
-    <div id="countdown"></div>
+    <button id="redirectButton" onclick="redirectToYouTube()">Go to YouTube</button>
+    
     <script>
+        let hiddenCountdownUnlocked = false;
+        let clickCount = 0;
+
         function updateCountdown() {
             const targetDate = new Date("April 1, 2025 11:00:00 EST").getTime();
             const now = new Date().getTime();
             const timeLeft = targetDate - now;
-
+            
             if (timeLeft <= 0) {
                 document.getElementById("countdown").innerHTML = "The episode is live!";
                 return;
             }
-
+            
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
+            
             document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
+        
+        function updateHiddenCountdown() {
+            const hiddenDate = new Date("March 31, 2025 11:00:00 EST").getTime();
+            const now = new Date().getTime();
+            const timeLeft = hiddenDate - now;
+            
+            if (timeLeft <= 0) {
+                document.getElementById("hiddenCountdown").innerHTML = "The secret is live!";
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById("hiddenCountdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        
+        function unlockHiddenCountdown(buttonClicked) {
+            if (hiddenCountdownUnlocked) return; // Prevent clicking more than needed
 
+            clickCount++;
+            // Hide the clicked button after it has been clicked
+            document.getElementById(`top-left`).style.display = clickCount > 0 ? "none" : "block";
+            document.getElementById(`bottom-left`).style.display = clickCount > 1 ? "none" : "block";
+            document.getElementById(`bottom-right`).style.display = clickCount > 2 ? "none" : "block";
+
+            if (clickCount >= 3) {
+                hiddenCountdownUnlocked = true;
+                document.getElementById("hiddenCountdown").style.display = "block";
+                document.getElementById("redirectButton").style.display = "block"; // Show the button once all buttons clicked
+                updateHiddenCountdown();
+                setInterval(updateHiddenCountdown, 1000);
+            }
+        }
+        
         function goBack() {
             window.location.href = "index.html";
         }
-
+        
+        function redirectToYouTube() {
+            window.location.href = "https://youtube.com/@Thunder_Axolotl";
+        }
+        
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
