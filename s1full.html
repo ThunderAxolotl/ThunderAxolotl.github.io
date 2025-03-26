@@ -107,20 +107,57 @@
             background: darkred;
         }
 
+        /* Secret Button (Barely Visible) */
+        .secret-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.1); /* Barely visible */
+            color: rgba(255, 255, 255, 0.1); /* Almost invisible text */
+            border: none;
+            font-size: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .secret-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
     </style>
     <script>
         var videoSrc = "https://www.youtube.com/embed/AjCS0YqP-VE?autoplay=1";  // Video source with autoplay enabled
+        var videoOpened = false; // Track if the video has been opened and closed
 
         function openVideo() {
             var iframe = document.getElementById("video-frame");
-            iframe.src = videoSrc;  // Restore the video source when opening
-            document.getElementById("video-overlay").style.display = "flex";  // Display the video overlay
+            iframe.src = videoSrc;  // Start the video
+            document.getElementById("video-overlay").style.display = "flex";  // Show the overlay
         }
 
         function closeVideo() {
-            document.getElementById("video-overlay").style.display = "none";  // Hide the video overlay
+            document.getElementById("video-overlay").style.display = "none";  // Hide the overlay
             var iframe = document.getElementById("video-frame");
             iframe.src = "";  // Stop the video by clearing the source
+
+            if (videoOpened) {
+                showSecretButton();  // Show the secret button if the video was opened and closed
+            }
+            videoOpened = !videoOpened;  // Toggle the flag
+        }
+
+        function showSecretButton() {
+            var secretButton = document.getElementById("secret-button");
+            secretButton.style.display = "block";  // Show the secret button
+
+            // Hide it after 3 seconds
+            setTimeout(function() {
+                secretButton.style.display = "none";  // Hide the secret button
+            }, 3000);
         }
 
         function goBack() {
@@ -134,10 +171,13 @@
 
     <!-- Large Watch Button -->
     <button class="watch-button" onclick="openVideo()">Watch Episode</button>
+    
+    <!-- Secret Button (Barely Visible) -->
+    <button id="secret-button" class="secret-button" onclick="window.location.href='hehe.html'">!</button>
 
     <!-- Fullscreen Video Overlay -->
-    <div id="video-overlay" class="video-overlay">
-        <div class="video-content">
+    <div id="video-overlay" class="video-overlay" onclick="closeVideo()">
+        <div class="video-content" onclick="event.stopPropagation();">  <!-- Prevents closing when clicking inside -->
             <button class="close-button" onclick="closeVideo()">✖</button>
             <iframe id="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
