@@ -10,7 +10,7 @@
             background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
             background-size: 400% 400%;
             animation: gradientBG 10s infinite alternate;
-            font-size: 20px; /* Slightly larger text for body */
+            font-size: 20px;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -27,43 +27,64 @@
 
         /* Make iframe bigger */
         #eventsFrame {
-            height: 600px; /* Increase height of the iframe */
-            width: 100%; /* Ensure it takes full width */
-            overflow: hidden; /* Disable internal scrolling */
+            height: 600px;
+            width: 100%;
+            overflow: hidden;
         }
 
         /* Title and description size adjustments */
         h2 {
-            font-size: 4rem; /* Slightly bigger titles */
+            font-size: 4rem;
         }
         h1 {
-            font-size: 10rem; /* Slightly bigger titles */
+            font-size: 8rem;
+        }
+        p {
+            font-size: 1.5rem;
         }
 
-        p {
-            font-size: 1.5rem; /* Slightly larger description text */
+        /* Button styling */
+        .college-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .college-btn:hover {
+            background: black;
+            color: white;
         }
     </style>
 </head>
 <body class="text-white font-sans">
+    <a href="college.html" class="college-btn">College?</a>
+
     <div class="container mx-auto p-8">
         <h1 class="rainbow-text text-8xl text-center mb-8">The Limbo Grind</h1>
         
         <!-- Announcements Section -->
         <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-            <h2 class="rainbow-text text-3xl font-semibold mb-4">Announcements</h2>
+            <h2 class="rainbow-text text-5xl font-semibold mb-4">Announcements</h2>
             <p>Limbo Checkpoint 5 has released! Go watch it now!!! <br> This website has been made yay!</p>
         </section>
         
-        <!-- Events Section (Fixed for Caching Issues) -->
+        <!-- Events Section -->
         <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-            <h2 class="rainbow-text text-3xl font-semibold mb-4">Progress</h2>
+            <h2 class="rainbow-text text-5xl font-semibold mb-4">Progress</h2>
             <iframe class="w-full" id="eventsFrame" style="border: none;" frameborder="0" scrolling="no"></iframe>
         </section>
         
-        <!-- Videos Section (Fixed for Caching Issues) -->
+        <!-- Videos Section -->
         <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-            <h2 class="rainbow-text text-3xl font-semibold mb-4">Videos</h2>
+            <h2 class="rainbow-text text-5xl font-semibold mb-4">Videos</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="videosGrid"></div>
         </section>
     </div>
@@ -75,7 +96,7 @@
         // Array of YouTube video IDs (swapped the last 2)
         const videoIDs = [
             "opCnOJxVi_A", "uSvqekhOf7Y", "gsTL4RqKykU",
-            "_oJFWnTmTiM", "87lMSYyg_6A", "Yalgolu2L68" // Swapped last two videos
+            "_oJFWnTmTiM", "ajYa1jnjmqM", "Yalgolu2L68"
         ];
 
         // Generate unique YouTube embed URLs

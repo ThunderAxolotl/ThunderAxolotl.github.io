@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Decision Countdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fullscreen Centering */
+        body {
+            background-color: #1e3a8a; /* Deep Blue */
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Countdown Styling */
+        #countdown {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Decision Button */
+        #decisionButton {
+            display: none;
+            background: white;
+            color: black;
+            padding: 20px 40px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        #decisionButton:hover {
+            background: black;
+            color: white;
+        }
+
+        /* Button shake animation with increasing intensity */
+        .shake1 { animation: shake 0.5s ease-in-out infinite; }
+        .shake2 { animation: shake 0.4s ease-in-out infinite; }
+        .shake3 { animation: shake 0.3s ease-in-out infinite; }
+        .shake4 { animation: shake 0.2s ease-in-out infinite; }
+        .shake5 { animation: shake 0.1s ease-in-out infinite; }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+
+        /* Large countdown before reveal */
+        #revealCountdown {
+            display: none;
+            font-size: 6rem;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Decision Letter */
+        #decisionLetter {
+            display: none;
+            background: white;
+            color: black;
+            padding: 40px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 700px;
+            text-align: left;
+            font-size: 1.5rem;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Strong drop shadow */
+            line-height: 1.8;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .letter-header {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .letter-content {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="headerText" class="text-5xl font-bold">My college decision releases in:</h1>
+    <div id="countdown"></div>
+
+    <button id="decisionButton" onclick="startReveal()">View Decision</button>
+    <div id="revealCountdown"></div>
+
+    <div id="decisionLetter">
+        <div class="letter-header">Petey Stillwell</div>
+        <div class="letter-content">
+            <p><center>Will be attending <strong> INSERT COLLEGE HERE! </strong> <br>They have enrolled and are ready to attend, fun!</center></p>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("March 5, 2025 12:00:00 GMT-0400"); // EST with DST accounted
+            const now = new Date();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = 
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                document.getElementById("countdown").innerHTML = "The time has come!";
+                document.getElementById("decisionButton").style.display = "block";
+                document.getElementById("headerText").style.display = "none"; // Remove header text
+                clearInterval(timer);
+            }
+        }
+
+        function startReveal() {
+            let button = document.getElementById("decisionButton");
+            let revealCountdown = document.getElementById("revealCountdown");
+
+            // Start shaking right away
+            let shakeClasses = ["shake1", "shake2", "shake3", "shake4", "shake5"];
+            let count = 5;
+
+            revealCountdown.style.display = "block";
+            revealCountdown.innerHTML = count;
+
+            let interval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    revealCountdown.innerHTML = count;
+                    button.classList.remove(...shakeClasses);
+                    button.classList.add(shakeClasses[5 - count]); // Increasing intensity gradually
+                } else {
+                    clearInterval(interval);
+                    revealCountdown.style.display = "none";
+                    showDecision();
+                }
+            }, 1000);
+        }
+
+        function showDecision() {
+            let button = document.getElementById("decisionButton");
+            let letter = document.getElementById("decisionLetter");
+
+            // Stop shaking button
+            button.classList.remove("shake1", "shake2", "shake3", "shake4", "shake5");
+
+            // Hide button
+            button.style.display = "none";
+
+            // Show letter with fade-in effect
+            letter.style.display = "block";
+            setTimeout(() => {
+                letter.style.opacity = "1";
+            }, 100);
+        }
+
+        // Update countdown every second
+        const timer = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+
+</body>
+</html>
