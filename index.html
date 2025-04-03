@@ -86,7 +86,6 @@
            <h2 class="rainbow-text text-5xl font-semibold mb-4">Events</h2>
            <iframe class="w-full h-96" id="livestreamFrame" frameborder="0" allowfullscreen></iframe>
        </section>      -->  
-        Videos Section 
         <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
             <h2 class="rainbow-text text-5xl font-semibold mb-4">Videos</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="videosGrid"></div>
@@ -94,16 +93,18 @@
     </div>
 
     <script>
-        // Force reload of the Events Spreadsheet by appending a timestamp
-        document.getElementById("livestreamFrame").src = "https://www.youtube.com/embed/6CVYBg4EBaw?timestamp=" + new Date().getTime();
-        document.getElementById("eventsFrame").src = "https://docs.google.com/spreadsheets/d/1wmLkDcC-E9WPVo6biHHDb0dAdUJQ3qh6-jkotJaSvA0/edit?gid=2123002142#gid=2123002142" + new Date().getTime();
-
-        // Array of YouTube video IDs (swapped the last 2)
+        // Removed broken reference to livestreamFrame
+        // document.getElementById("livestreamFrame").src = "https://www.youtube.com/embed/6CVYBg4EBaw?timestamp=" + new Date().getTime();
+    
+        // Fixed Google Sheets iframe reload
+        document.getElementById("eventsFrame").src = "https://docs.google.com/spreadsheets/d/1wmLkDcC-E9WPVo6biHHDb0dAdUJQ3qh6-jkotJaSvA0/edit?gid=2123002142#gid=2123002142&timestamp=" + new Date().getTime();
+    
+        // Array of YouTube video IDs
         const videoIDs = [
             "opCnOJxVi_A", "uSvqekhOf7Y", "gsTL4RqKykU",
             "_oJFWnTmTiM", "ajYa1jnjmqM", "Yalgolu2L68"
         ];
-
+    
         // Generate unique YouTube embed URLs
         let videoGrid = document.getElementById("videosGrid");
         videoIDs.forEach(id => {
