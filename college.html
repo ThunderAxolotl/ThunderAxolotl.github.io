@@ -1,127 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Decision Countdown</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Fullscreen Centering */
-        body {
-            background-color: #1e3a8a; /* Deep Blue */
-            color: white;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            flex-direction: column;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Decision Countdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #1e3a8a;
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+    #countdown {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    #decisionButton {
+      display: none;
+      background: white;
+      color: black;
+      padding: 20px 40px;
+      font-size: 2rem;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+    #decisionButton:hover {
+      background: black;
+      color: white;
+    }
+    .shake1 { animation: shake 0.5s ease-in-out infinite; }
+    .shake2 { animation: shake 0.4s ease-in-out infinite; }
+    .shake3 { animation: shake 0.3s ease-in-out infinite; }
+    .shake4 { animation: shake 0.2s ease-in-out infinite; }
+    .shake5 { animation: shake 0.1s ease-in-out infinite; }
 
-        /* Countdown Styling */
-        #countdown {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(5px); }
+    }
 
-        /* Decision Button */
-        #decisionButton {
-            display: none;
-            background: white;
-            color: black;
-            padding: 20px 40px;
-            font-size: 2rem;
-            font-weight: bold;
-            border-radius: 12px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: background 0.3s, color 0.3s;
-            position: relative;
-        }
+    #revealCountdown {
+      display: none;
+      font-size: 6rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
 
-        #decisionButton:hover {
-            background: black;
-            color: white;
-        }
+    #decisionLetter {
+      display: none;
+      background: white;
+      color: black;
+      padding: 40px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 700px;
+      text-align: left;
+      font-size: 1.5rem;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+      line-height: 1.8;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
 
-        /* Button shake animation with increasing intensity */
-        .shake1 { animation: shake 0.5s ease-in-out infinite; }
-        .shake2 { animation: shake 0.4s ease-in-out infinite; }
-        .shake3 { animation: shake 0.3s ease-in-out infinite; }
-        .shake4 { animation: shake 0.2s ease-in-out infinite; }
-        .shake5 { animation: shake 0.1s ease-in-out infinite; }
+    .letter-header {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(5px); }
-        }
+    .letter-content {
+      font-size: 1.2rem;
+    }
 
-        /* Large countdown before reveal */
-        #revealCountdown {
-            display: none;
-            font-size: 6rem;
-            font-weight: bold;
-            margin-top: 20px;
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
-        }
+    #secretButton {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
 
-        /* Decision Letter */
-        #decisionLetter {
-            display: none;
-            background: white;
-            color: black;
-            padding: 40px;
-            border-radius: 12px;
-            width: 80%;
-            max-width: 700px;
-            text-align: left;
-            font-size: 1.5rem;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Strong drop shadow */
-            line-height: 1.8;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
+    #passwordPrompt {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
 
-        .letter-header {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .letter-content {
-            font-size: 1.2rem;
-        }
-    </style>
+    #passwordInput {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
+  <button id="secretButton">?</button>
 
-    <h1 id="headerText" class="text-5xl font-bold">My college decision releases in:</h1>
-    <div id="countdown"></div>
+  <h1 id="headerText" class="text-5xl font-bold">My college decision releases in:</h1>
+  <div id="countdown"></div>
 
-    <button id="decisionButton" onclick="startReveal()">View Decision</button>
-    <div id="revealCountdown"></div>
+  <button id="decisionButton" onclick="startReveal()">View Decision</button>
+  <div id="revealCountdown"></div>
 
-    <div id="decisionLetter">
-        <div class="letter-header">Petey Stillwell</div>
-        <div class="letter-content">
-            <p><center>Will be attending <strong> The UNIVERSITY OF VIRGINIA! </strong> <br>for their Bachelor Degree, yay!</center></p>
-        </div>
+  <div id="decisionLetter">
+    <div class="letter-header">Petey Stillwell</div>
+    <div class="letter-content">
+      <p><center>Will be attending <strong> The UNIVERSITY OF VIRGINIA! </strong><br>for their Bachelor Degree, yay!</center></p>
     </div>
+  </div>
 
-    <script>
-      function updateCountdown() {
-    const targetDate = new Date("April 6, 2025 15:14:15 GMT-0400"); // EST with DST accounted
-    const now = new Date();
-    const difference = targetDate - now;
+  <div id="passwordPrompt">
+    <p class="text-2xl font-bold">Episode 5... True Limbo... What do I SCREAM (use _ for words)?</p>
+    <input id="passwordInput" type="text" placeholder="Password..." class="mt-4 p-2 rounded text-black text-xl" />
+    <button onclick="checkPassword()" class="ml-2 p-2 px-4 bg-white text-black font-bold rounded hover:bg-black hover:text-white transition">Submit</button>
+    <p id="passwordError" class="mt-2 text-red-400 font-bold"></p>
+  </div>
 
-    if (difference > 0) {
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date("April 6, 2025 15:14:15 GMT-0400");
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
@@ -130,66 +146,82 @@
         let parts = [];
 
         if (days > 0) parts.push(`${days}d`);
-        if (hours > 0 || parts.length > 0) parts.push(`${hours}h`); // show hours if any larger unit was shown
+        if (hours > 0 || parts.length > 0) parts.push(`${hours}h`);
         if (minutes > 0 || parts.length > 0) parts.push(`${minutes}m`);
-        parts.push(`${seconds}s`); // always show seconds
+        parts.push(`${seconds}s`);
 
         document.getElementById("countdown").innerHTML = parts.join(" ");
-    } else {
+      } else {
         document.getElementById("countdown").innerHTML = "The time has come!";
         document.getElementById("decisionButton").style.display = "block";
-        document.getElementById("headerText").style.display = "none"; // Remove header text
+        document.getElementById("headerText").style.display = "none";
         clearInterval(timer);
+      }
     }
-}
 
+    function startReveal() {
+      let button = document.getElementById("decisionButton");
+      let revealCountdown = document.getElementById("revealCountdown");
 
-        function startReveal() {
-            let button = document.getElementById("decisionButton");
-            let revealCountdown = document.getElementById("revealCountdown");
+      let shakeClasses = ["shake1", "shake2", "shake3", "shake4", "shake5"];
+      let count = 5;
 
-            // Start shaking right away
-            let shakeClasses = ["shake1", "shake2", "shake3", "shake4", "shake5"];
-            let count = 5;
+      revealCountdown.style.display = "block";
+      revealCountdown.innerHTML = count;
 
-            revealCountdown.style.display = "block";
-            revealCountdown.innerHTML = count;
-
-            let interval = setInterval(() => {
-                count--;
-                if (count > 0) {
-                    revealCountdown.innerHTML = count;
-                    button.classList.remove(...shakeClasses);
-                    button.classList.add(shakeClasses[5 - count]); // Increasing intensity gradually
-                } else {
-                    clearInterval(interval);
-                    revealCountdown.style.display = "none";
-                    showDecision();
-                }
-            }, 1000);
+      let interval = setInterval(() => {
+        count--;
+        if (count > 0) {
+          revealCountdown.innerHTML = count;
+          button.classList.remove(...shakeClasses);
+          button.classList.add(shakeClasses[5 - count]);
+        } else {
+          clearInterval(interval);
+          revealCountdown.style.display = "none";
+          showDecision();
         }
+      }, 1000);
+    }
 
-        function showDecision() {
-            let button = document.getElementById("decisionButton");
-            let letter = document.getElementById("decisionLetter");
+    function showDecision() {
+      let button = document.getElementById("decisionButton");
+      let letter = document.getElementById("decisionLetter");
 
-            // Stop shaking button
-            button.classList.remove("shake1", "shake2", "shake3", "shake4", "shake5");
+      button.classList.remove("shake1", "shake2", "shake3", "shake4", "shake5");
+      button.style.display = "none";
 
-            // Hide button
-            button.style.display = "none";
+      letter.style.display = "block";
+      setTimeout(() => {
+        letter.style.opacity = "1";
+      }, 100);
+    }
 
-            // Show letter with fade-in effect
-            letter.style.display = "block";
-            setTimeout(() => {
-                letter.style.opacity = "1";
-            }, 100);
-        }
+    // Secret password logic
+    document.getElementById("secretButton").addEventListener("click", () => {
+      clearInterval(timer);
+      document.getElementById("countdown").style.display = "none";
+      document.getElementById("headerText").style.display = "none";
+      document.getElementById("decisionButton").style.display = "none";
+      document.getElementById("passwordPrompt").style.display = "block";
+    });
 
-        // Update countdown every second
-        const timer = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-    </script>
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim().toLowerCase();
+      const correct = "ah_you_imbecile_how_dare_you_use_my_own_tricks";
 
+      if (input === correct) {
+        document.getElementById("passwordPrompt").style.display = "none";
+        document.getElementById("decisionButton").style.display = "block";
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("headerText").style.display = "none";
+        document.getElementById("passwordError").innerText = "";
+      } else {
+        document.getElementById("passwordError").innerText = "Incorrect... try again, fool.";
+      }
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
