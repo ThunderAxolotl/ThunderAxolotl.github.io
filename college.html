@@ -116,26 +116,33 @@
     </div>
 
     <script>
-        function updateCountdown() {
-            const targetDate = new Date("April 6, 2025 12:00:00 GMT-0400"); // EST with DST accounted
-            const now = new Date();
-            const difference = targetDate - now;
+      function updateCountdown() {
+    const targetDate = new Date("April 6, 2025 12:00:00 GMT-0400"); // EST with DST accounted
+    const now = new Date();
+    const difference = targetDate - now;
 
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                document.getElementById("countdown").innerHTML = 
-                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            } else {
-                document.getElementById("countdown").innerHTML = "The time has come!";
-                document.getElementById("decisionButton").style.display = "block";
-                document.getElementById("headerText").style.display = "none"; // Remove header text
-                clearInterval(timer);
-            }
-        }
+        let parts = [];
+
+        if (days > 0) parts.push(`${days}d`);
+        if (hours > 0 || parts.length > 0) parts.push(`${hours}h`); // show hours if any larger unit was shown
+        if (minutes > 0 || parts.length > 0) parts.push(`${minutes}m`);
+        parts.push(`${seconds}s`); // always show seconds
+
+        document.getElementById("countdown").innerHTML = parts.join(" ");
+    } else {
+        document.getElementById("countdown").innerHTML = "The time has come!";
+        document.getElementById("decisionButton").style.display = "block";
+        document.getElementById("headerText").style.display = "none"; // Remove header text
+        clearInterval(timer);
+    }
+}
+
 
         function startReveal() {
             let button = document.getElementById("decisionButton");
