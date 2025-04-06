@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secret Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #1e3a8a;
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    #passwordPrompt {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #passwordInput {
+      margin-top: 10px;
+    }
+
+    #result {
+      display: none;
+      font-size: 5rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="passwordPrompt">
+    <p class="text-2xl font-bold">Episode 5... True Limbo... What do I SCREAM (use _ for words)?</p>
+    <input id="passwordInput" type="text" placeholder="Password..." class="mt-4 p-2 rounded text-black text-xl" />
+    <button onclick="checkPassword()" class="ml-2 p-2 px-4 bg-white text-black font-bold rounded hover:bg-black hover:text-white transition">Submit</button>
+    <p id="passwordError" class="mt-2 text-red-400 font-bold"></p>
+  </div>
+
+  <div id="result">Your code is: 937</div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim().toLowerCase();
+      const correct = "ah_you_imbecile_how_dare_you_use_my_own_tricks";
+
+      if (input === correct) {
+        document.getElementById("passwordPrompt").style.display = "none";
+        const result = document.getElementById("result");
+        result.style.display = "block";
+        setTimeout(() => {
+          result.style.opacity = "1";
+        }, 100);
+      } else {
+        document.getElementById("passwordError").innerText = "Incorrect... try again, fool.";
+      }
+    }
+  </script>
+</body>
+</html>
