@@ -109,32 +109,8 @@
   </style>
 </head>
 <body>
-  <button id="secretButton">?</button>
-
   <h1 id="headerText" class="text-5xl font-bold">My college decision releases in:</h1>
   <div id="countdown"></div>
-
-  <button id="decisionButton" onclick="startReveal()">View Decision</button>
-  <div id="revealCountdown"></div>
-
-  <div id="decisionLetter">
-    <div class="letter-header">Petey Stillwell</div>
-    <div class="letter-content">
-      <p><center>Will be attending <strong id="collegeName">Air</strong><br>for their Bachelor Degree, yay!</center></p>
-      
-      <!-- YouTube link -->
-      <p class="mt-6 text-center">
-        <a href="https://youtu.be/8Z1dum8fqxE" target="_blank" class="underline text-blue-800">Hehe</a>
-      </p>
-  
-      <!-- Password section -->
-      <div id="revealCollegeContainer" class="text-center mt-4">
-        <input id="revealCollegeInput" type="text" placeholder="Enter password..." class="mt-2 p-2 rounded text-black text-xl" />
-        <button onclick="revealCollege()" class="ml-2 p-2 px-4 bg-white text-black font-bold rounded hover:bg-black hover:text-white transition">Reveal College</button>
-        <p id="revealError" class="mt-2 text-red-500 font-bold"></p>
-      </div>
-    </div>
-  </div>
 
   <div id="passwordPrompt">
     <p class="text-2xl font-bold">Episode 5... True Limbo... What do I SCREAM (use _ for words)?</p>
@@ -143,108 +119,112 @@
     <p id="passwordError" class="mt-2 text-red-400 font-bold"></p>
   </div>
 
- <!-- Replace the script section at the bottom of your HTML with the following -->
-<script>
- function updateCountdown() {
-  const targetDate = new Date("April 6, 2025 15:14:15 GMT-0400");
-  const now = new Date();
-  const difference = targetDate - now;
+  <div id="revealCountdown"></div>
 
-  if (difference > 0) {
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  <div id="decisionLetter">
+    <div class="letter-header">Petey Stillwell</div>
+    <div class="letter-content">
+      <p><center>Will be attending <strong id="collegeName">Air</strong><br>for their Bachelor Degree, yay!</center></p>
+      
+      <p class="mt-6 text-center">
+        <a href="https://youtu.be/8Z1dum8fqxE" target="_blank" class="underline text-blue-800">Hehe</a>
+      </p>
+  
+      <div id="revealCollegeContainer" class="text-center mt-4">
+        <input id="revealCollegeInput" type="text" placeholder="Enter password..." class="mt-2 p-2 rounded text-black text-xl" />
+        <button onclick="revealCollege()" class="ml-2 p-2 px-4 bg-white text-black font-bold rounded hover:bg-black hover:text-white transition">Reveal College</button>
+        <p id="revealError" class="mt-2 text-red-500 font-bold"></p>
+      </div>
+    </div>
+  </div>
 
-    let parts = [];
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date("April 6, 2025 15:14:15 GMT-0400");
+      const now = new Date();
+      const difference = targetDate - now;
 
-    if (days > 0) parts.push(`${days}d`);
-    if (hours > 0 || parts.length > 0) parts.push(`${hours}h`);
-    if (minutes > 0 || parts.length > 0) parts.push(`${minutes}m`);
-    parts.push(`${seconds}s`);
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML = parts.join(" ");
-  } else {
-    clearInterval(timer);
-    document.getElementById("countdown").innerHTML = "The time has come!";
-    document.getElementById("headerText").style.display = "none";
-    document.getElementById("countdown").style.display = "none";
+        let parts = [];
 
-    // Show the letter
-    const letter = document.getElementById("decisionLetter");
-    letter.style.display = "block";
-    setTimeout(() => {
-      letter.style.opacity = "1";
-    }, 100);
-  }
-}
+        if (days > 0) parts.push(`${days}d`);
+        if (hours > 0 || parts.length > 0) parts.push(`${hours}h`);
+        if (minutes > 0 || parts.length > 0) parts.push(`${minutes}m`);
+        parts.push(`${seconds}s`);
 
-  const timer = setInterval(updateCountdown, 1000);
-  updateCountdown();
+        document.getElementById("countdown").innerHTML = parts.join(" ");
+      } else {
+        clearInterval(timer);
+        document.getElementById("headerText").style.display = "none";
+        document.getElementById("countdown").style.display = "none";
 
-  // Secret button for hidden password
-  document.getElementById("secretButton").addEventListener("click", () => {
-    clearInterval(timer);
-    document.getElementById("countdown").style.display = "none";
-    document.getElementById("headerText").style.display = "none";
-    document.getElementById("decisionButton").style.display = "none";
-    document.getElementById("passwordPrompt").style.display = "block";
-  });
-
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value.trim().toLowerCase();
-    const correct = "ah_you_imbecile_how_dare_you_use_my_own_tricks";
-
-    if (input === correct) {
-      document.getElementById("passwordPrompt").style.display = "none";
-      document.getElementById("decisionLetter").style.display = "block";
-      setTimeout(() => {
-        document.getElementById("decisionLetter").style.opacity = "1";
-      }, 100);
-    } else {
-      document.getElementById("passwordError").innerText = "Incorrect... try again, fool.";
+        // Show the password prompt instead of the letter
+        document.getElementById("passwordPrompt").style.display = "block";
+      }
     }
-  }
 
-  function revealCollege() {
-    const input = document.getElementById("revealCollegeInput").value.trim().toUpperCase();
-    const correct = "DROL";
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    if (input === correct) {
-      document.getElementById("revealError").innerText = "";
-      const letterBox = document.getElementById("decisionLetter");
-      const countdownDisplay = document.getElementById("revealCountdown");
-      let shakeClasses = ["shake1", "shake2", "shake3", "shake4", "shake5"];
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim().toLowerCase();
+      const correct = "ah_you_imbecile_how_dare_you_use_my_own_tricks";
 
-      let count = 5;
-      let currentShake = 0;
+      if (input === correct) {
+        document.getElementById("passwordPrompt").style.display = "none";
+        const letter = document.getElementById("decisionLetter");
+        letter.style.display = "block";
+        setTimeout(() => {
+          letter.style.opacity = "1";
+        }, 100);
+      } else {
+        document.getElementById("passwordError").innerText = "Incorrect... try again, fool.";
+      }
+    }
 
-      countdownDisplay.style.display = "block";
-      countdownDisplay.innerHTML = count;
+    function revealCollege() {
+      const input = document.getElementById("revealCollegeInput").value.trim().toUpperCase();
+      const correct = "DROL";
 
-      const interval = setInterval(() => {
-        count--;
-        currentShake++;
+      if (input === correct) {
+        document.getElementById("revealError").innerText = "";
+        const letterBox = document.getElementById("decisionLetter");
+        const countdownDisplay = document.getElementById("revealCountdown");
+        let shakeClasses = ["shake1", "shake2", "shake3", "shake4", "shake5"];
 
+        let count = 5;
+        let currentShake = 0;
+
+        countdownDisplay.style.display = "block";
         countdownDisplay.innerHTML = count;
 
-        letterBox.classList.remove(...shakeClasses);
-        if (currentShake < shakeClasses.length) {
-          letterBox.classList.add(shakeClasses[currentShake]);
-        }
+        const interval = setInterval(() => {
+          count--;
+          currentShake++;
 
-        if (count === 0) {
-          clearInterval(interval);
-          countdownDisplay.style.display = "none";
+          countdownDisplay.innerHTML = count;
+
           letterBox.classList.remove(...shakeClasses);
-          document.getElementById("collegeName").innerText = "The University of Virginia!";
-        }
-      }, 1000);
-    } else {
-      document.getElementById("revealError").innerText = "Incorrect password... try again.";
-    }
-  }
-</script>
+          if (currentShake < shakeClasses.length) {
+            letterBox.classList.add(shakeClasses[currentShake]);
+          }
 
+          if (count === 0) {
+            clearInterval(interval);
+            countdownDisplay.style.display = "none";
+            letterBox.classList.remove(...shakeClasses);
+            document.getElementById("collegeName").innerText = "The University of Virginia!";
+          }
+        }, 1000);
+      } else {
+        document.getElementById("revealError").innerText = "Incorrect password... try again.";
+      }
+    }
+  </script>
 </body>
 </html>
