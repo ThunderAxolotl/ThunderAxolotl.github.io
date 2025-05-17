@@ -1,120 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Limbo Grind</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            background-size: 400% 400%;
-            animation: gradientBG 10s infinite alternate;
-            font-size: 20px;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+  <meta charset="UTF-8">
+  <title>Yharon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ff4d00;
+      text-shadow: 4px 4px 10px #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      cursor: pointer;
+    }
 
-        /* Rainbow gradient effect for text */
-        .rainbow-text {
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: bold;
-        }
+    .click-message {
+      font-size: 3em;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 15px;
+      transition: opacity 15s ease;
+    }
 
-        /* Make iframe bigger */
-        #eventsFrame {
-            height: 600px;
-            width: 100%;
-            overflow: hidden;
-        }
+    .lyrics {
+      font-size: 3em;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 40px 80px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 45s ease;
+      pointer-events: none;
+    }
 
-        /* Title and description size adjustments */
-        h2 {
-            font-size: 4rem;
-        }
-        h1 {
-            font-size: 8rem;
-        }
-        p {
-            font-size: 1.5rem;
-        }
+    .show {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-        /* Button styling */
-        .college-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: white;
-            color: black;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .college-btn:hover {
-            background: black;
-            color: white;
-        }
-    </style>
+    audio {
+      display: none;
+    }
+  </style>
 </head>
-<body class="text-white font-sans">
-    <a href="college.html" class="college-btn">College?</a>
+<body>
 
-    <div class="container mx-auto p-8">
-        <h1 class="rainbow-text text-8xl text-center mb-8">The Limbo Grind</h1>
-        
-        <!-- Announcements Section -->
-        <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-            <h2 class="rainbow-text text-5xl font-semibold mb-4">Announcements</h2>
-            <p>Limbo Checkpoint 5 has released! Go watch it now!!! <br> This website has been made yay!</p>
-        </section>
-        
-        <!-- Events Section -->
-       
-        <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-            <h2 class="rainbow-text text-5xl font-semibold mb-4">Progress</h2>
-            <iframe class="w-full" id="eventsFrame" style="border: none;" frameborder="0" scrolling="no"></iframe>
-        </section>
-     <!--   <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-           <h2 class="rainbow-text text-5xl font-semibold mb-4">Events</h2>
-           <iframe class="w-full h-96" id="livestreamFrame" frameborder="0" allowfullscreen></iframe>
-       </section>      -->  
-        <section class="bg-black bg-opacity-60 p-6 rounded-xl mb-8">
-            <h2 class="rainbow-text text-5xl font-semibold mb-4">Videos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="videosGrid"></div>
-        </section>
-    </div>
+  <audio id="bgm" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-    <script>
-        // Removed broken reference to livestreamFrame
-        // document.getElementById("livestreamFrame").src = "https://www.youtube.com/embed/6CVYBg4EBaw?timestamp=" + new Date().getTime();
+  <div id="clickPrompt" class="click-message">Click to Begin</div>
+  <div id="lyricsText" class="lyrics">The enemy ascended beyond your control;
+    ​or was that all your intention?
+    They have managed to demolish whatever we made,​
+    ​but you're failing to comprehend...
+    If they can, they will easily butcher you whole,​​
+    ​while you're blinded by your depression.​
+    I have gotten to the point where I'm just too afraid
+    ​that you're going to meet your end.​
     
-        // Fixed Google Sheets iframe reload
-        document.getElementById("eventsFrame").src = "https://docs.google.com/spreadsheets/d/1wmLkDcC-E9WPVo6biHHDb0dAdUJQ3qh6-jkotJaSvA0/edit?gid=2123002142#gid=2123002142&timestamp=" + new Date().getTime();
+    My screams echo out through the fire,​
+    ​and your rival dares stand in my way...
+    Yes, this is a hardship most dire,​
+    ​and one day you will heed what I say:
     
-        // Array of YouTube video IDs
-        const videoIDs = [
-            "opCnOJxVi_A", "uSvqekhOf7Y", "gsTL4RqKykU",
-            "_oJFWnTmTiM", "ajYa1jnjmqM", "Yalgolu2L68"
-        ];
-    
-        // Generate unique YouTube embed URLs
-        let videoGrid = document.getElementById("videosGrid");
-        videoIDs.forEach(id => {
-            let iframe = document.createElement("iframe");
-            iframe.className = "w-full h-56";
-            iframe.src = `https://www.youtube.com/embed/${id}?t=${new Date().getTime()}`;
-            iframe.setAttribute("frameborder", "0");
-            iframe.setAttribute("allowfullscreen", "true");
-            videoGrid.appendChild(iframe);
-        });
-    </script>
+    This is my message to my master:
+    This is a fight you cannot win.​
+    I think that past your great disasters,​
+    ​their victory stirs below your skin.​
+    If you proceed, I will not blame you.​
+    I will move forth and win your war.​
+    But if I should die before you continue,​
+    ​you shall have heard my final dying roar.</div>
+
+  <script>
+    const prompt = document.getElementById('clickPrompt');
+    const lyrics = document.getElementById('lyricsText');
+    const audio = document.getElementById('bgm');
+
+    document.body.addEventListener('click', () => {
+      prompt.style.display = 'none';
+      lyrics.classList.add('show');
+      audio.play();
+    }, { once: true });
+  </script>
+
 </body>
 </html>
