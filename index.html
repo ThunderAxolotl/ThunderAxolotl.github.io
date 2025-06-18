@@ -1,121 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="logo.jpg">
-    <title>Shields!</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-            background-color: #8B0000; /* Dark red background */
-            color: white; /* White text color */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="logo.jpg" />
+  <title>Shields!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-image: url('background.png'); /* Changed background */
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
 
-        h1, h2, h3 {
-            margin: 20px 0;
-        }
+    /* Navigation Tabs */
+    .navbar {
+      display: flex;
+      background-color: red; /* Changed from #222 to red */
+      justify-content: center;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-        /* Welcome Message */
-        #welcome-message {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+    .tab-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 40px;
+      margin: 0 20px;
+      cursor: pointer;
+      padding: 10px 20px;
+    }
 
-        /* Announcement Style */
-        #announcement {
-            font-size: 20px;
-            font-weight: bold;
-            color: yellow;
-        }
+    .tab-button:hover {
+      background-color: #444;
+      border-radius: 5px;
+    }
 
-        /* Make Season labels bigger */
-        .season-label {
-            font-size: 48px; /* Larger font size for season labels */
-            font-weight: bold;
-        }
+    .tab-content {
+      display: none;
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
 
-        /* Navbar for Season buttons under each season label */
-        .season-buttons {
-            margin-bottom: 30px;
-        }
+    .active {
+      display: block;
+    }
 
-        .button-container {
-            margin: 20px 0;
-        }
+    h1, h2, h3 {
+      margin: 20px 0;
+    }
 
-        .season-button {
-            background-color: white;
-            color: black;
-            padding: 20px 40px; /* Increased padding for larger buttons */
-            font-size: 25px; /* Larger font size for buttons */
-            border: none;
-            cursor: pointer;
-            border-radius: 10px; /* Slightly rounded corners */
-            margin: 10px;
-            display: inline-block;
-            width: 200px; /* Fixed width for consistency */
-            text-align: center;
-        }
+    .season-label {
+      font-size: 48px;
+      font-weight: bold;
+    }
 
-        .season-button:hover {
-            background-color: #ddd;
-        }
+    .season-buttons {
+      margin-bottom: 30px;
+    }
 
-        /* Hidden Button in bottom-right corner */
-       
-    </style>
+    .button-container {
+      margin: 20px 0;
+    }
+
+    .season-button {
+      background-color: white;
+      color: black;
+      padding: 20px 40px;
+      font-size: 25px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .season-button:hover {
+      background-color: #ddd;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Welcome Message -->
-    <div id="welcome-message">
-        Welcome to Shields! Shields is all about pictures that I take of my friends, which I then edit to make them look funny. 
-        In Shields, expect many funny references to FCHS, specific students in the series, and many more things that are guaranteed to make you laugh! Hope you enjoy!!!
+  <!-- Navigation Tabs -->
+  <div class="navbar">
+    <button class="tab-button" onclick="openTab('infoTab')">Info</button>
+    <button class="tab-button" onclick="openTab('chapter1Tab')">Chapter 1</button>
+  </div>
+<center>
+  <!-- Info Tab -->
+  <div id="infoTab" class="tab-content active">
+    <div id="welcome-message" style="font-size: 50px; font-weight: bold; margin-bottom: 20px;">
+      Welcome to Shields! Shields is all about pictures that I take of my friends, which I then edit to make them look funny.<br><br>
+      In Shields, expect many funny references to school, specific students in the series, and many more things that are guaranteed to make you laugh! Hope you enjoy!!!<br><br>
+      All students have given me permission to use their face and quotes on them for the series, so worry not!
+    </div>
+    <p style="font-size: 70px; font-weight: bold;">06/18/25 -> New Website!!! Season 2 Complete!!! S3/S4 Trailer in Special Page!</p>
+  </div>
+</center>
+  <!-- Chapter 1 Tab --><center>
+  <div id="chapter1Tab" class="tab-content">
+<h1 class="season-label" style="color: rgb(76, 76, 236); font-size: 64px;">Chapter 1 - Fluvanna</h1><br>
+    <div class="season-buttons">
+      <h2 class="season-label">Season 1 - Limbo</h2>
+      <div class="button-container">
+        <a href="s1info.html"><button class="season-button">Info</button></a>
+        <a href="s1e1.html"><button class="season-button">Episode 1</button></a>
+        <a href="s1e2.html"><button class="season-button">Episode 2</button></a>
+        <a href="s1e3.html"><button class="season-button">Episode 3</button></a>
+        <a href="s1e4.html"><button class="season-button">Episode 4</button></a>
+        <a href="s1full.html"><button class="season-button">Full Vid</button></a>
+      </div>
+    </div>
+
+    <div class="season-buttons">
+      <h2 class="season-label">Season 2 - Thunder's Journey</h2>
+      <div class="button-container">
+        <a href="s2info.html"><button class="season-button">Info</button></a>
+        <a href="s2e1.html"><button class="season-button">Episode 1</button></a>
+        <a href="s2e2.html"><button class="season-button">Episode 2</button></a>
+        <a href="s2e3.html"><button class="season-button">Episode 3</button></a>
+        <a href="s2e4.html"><button class="season-button">Episode 4</button></a>
+        <a href="s2e5.html"><button class="season-button">Episode 5</button></a>
+        <a href="s2full.html"><button class="season-button">Full Vid</button></a>
+      </div>
+    </div>
+    <div class="season-buttons">
+      <h2 class="season-label">Season 3 - Rebirth</h2>
+      
+    </div>
+    <div class="season-buttons">
+      <h2 class="season-label">Season 4 - Ultimate Destruction</h2>
     </div>
 <br>
-    <!-- Announcements -->
-<p style="font-size: 50px; font-weight: bold;">
-    06/14/2025 -> Episode 4 W
-</p>
-<br><br><br>
-    <!-- Season 1 Section -->
     <div class="season-buttons">
-        <h2 class="season-label">Season 1 - Limbo</h2>
-        <div class="button-container">
-            <a href="s1info.html"><button class="season-button">Info</button></a>
-            <a href="s1e1.html"><button class="season-button">Episode 1</button></a>
-            <a href="s1e2.html"><button class="season-button">Episode 2</button></a>
-            <a href="s1e3.html"><button class="season-button">Episode 3</button></a>
-            <a href="s1e4.html"><button class="season-button">Episode 4</button></a>
-            <a href="s1full.html"><button class="season-button">Full Vid</button></a>
-            <!-- Add the Remix! button here -->
-            </a>
-        </div>  
+      <div class="button-container">
+        <a href="remixes.html"><button class="season-button">Special</button></a>
+      </div>
     </div>
-    
-     <div class="season-buttons">
-        <h2 class="season-label">Season 2 - Thunder's Journey</h2>
-        <div class="button-container">
-            <a href="s2info.html"><button class="season-button">Info</button></a>
-            <a href="s2e1.html"><button class="season-button">Episode 1</button></a>
-            <a href="s2e2.html"><button class="season-button">Episode 2</button></a>
-            <a href="s2e3.html"><button class="season-button">Episode 3</button></a>
-            <a href="s2e4.html"><button class="season-button">Episode 4</button></a>
-            <a href="s2e5.html"><button class="season-button">Episode 5</button></a>
-            </a>
-        </div>  
-    </div>
-<br><br>
-     <div class="season-buttons">
-        <div class="button-container">
-            <a href="remixes.html"><button class="season-button">Special</button></a>
-        </div>
-    </div>
-
-
+  </div>
+</center>
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
