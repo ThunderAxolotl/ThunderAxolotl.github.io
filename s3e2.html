@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo1.jpg">
+    <title>S3 E2: End of Geometry Dash</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 10px;
+            background-image: url('BGS/S3E2.png'); /* Background image for S1 E5 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            min-height: 100vh; /* Allow the content to exceed the viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the content */
+            align-items: center; /* Horizontally center the content */
+            overflow: auto; /* Allow scrolling */
+        }
+
+        /* Header with background box */
+        h1 {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            font-size: 62px; /* Larger font size */
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 1000px;
+            text-transform: uppercase;
+            box-sizing: border-box; /* Include padding and border in width calculation */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 1);
+            color: white;
+            border: none;
+            font-size: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            color: black;
+        }
+        /* Button to open video */
+        .watch-button {
+            background-color: white;
+            color: black;
+            padding: 25px 50px; /* Larger button size */
+            font-size: 40px; /* Larger font size */
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            margin: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .watch-button:hover {
+            background-color: #ddd;
+        }
+
+        /* Text Box for the Description */
+        .text-container {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            width: fit-content;
+            max-width: 80%;
+            margin-top: 20px; /* Adjust this value to change the gap */
+            margin-bottom: 50px;
+        }
+
+        .description {
+            font-size: 38px; /* Larger font size for description */
+            line-height: 1.5;
+        }
+
+        /* Fullscreen Video Overlay */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Video Container */
+        .video-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Add shadow for visual depth */
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border-radius: 15px;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 30px; /* Larger close button */
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .close-button:hover {
+            background: darkred;
+        }
+
+        /* For small screens (like mobile) */
+        @media (max-width: 768px) {
+            body {
+                min-height: auto; /* Allow content to extend beyond the viewport height */
+                padding-top: 20px; /* Add a little more top padding on small screens */
+            }
+
+            h1 {
+                font-size: 36px; /* Reduce title font size on mobile */
+                padding: 20px; /* Reduce padding on mobile */
+                width: 90%; /* Make the title box width more responsive */
+            }
+
+            .watch-button {
+                padding: 20px 40px;
+                font-size: 30px;
+            }
+
+            .text-container {
+                margin-top: 15px; /* Reduced top margin on mobile */
+            }
+            .back-button {
+                font-size: 24px;
+                padding: 8px 12px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+    <script>
+      var videoSrc = "https://www.youtube.com/embed/ANT3FXH5z1s?autoplay=1";  // Store the original video source with autoplay
+
+      function openVideo() {
+          var iframe = document.getElementById("video-frame");
+          iframe.src = videoSrc;  // Restore the video source when opening
+          document.getElementById("video-overlay").style.display = "flex";
+      }
+
+      function closeVideo() {
+          document.getElementById("video-overlay").style.display = "none";
+          var iframe = document.getElementById("video-frame");
+          iframe.src = "";  // Stop the video when closing by removing the source
+      }
+      function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <h1>S3 E2: End of Geometry Dash</h1>
+
+    <!-- Watch Button -->
+    <button class="watch-button" onclick="openVideo()">Watch Episode</button>
+
+    <!-- Episode Description -->
+    <div class="text-container">
+        <div class="description">
+           <center> <p><strong>Episode 2:</strong> Thunder travels to Geometry Dash to confront Leonard and destroy the very thing he protects. </center><center>Voice: Thunder; Ai voice: Leonard </center></p>
+        </div>
+    </div>
+
+    <!-- Fullscreen Video Overlay -->
+    <div id="video-overlay" class="video-overlay">
+        <div class="video-content">
+            <button class="close-button" onclick="closeVideo()">✖</button>
+            <iframe id="video-frame" src="https://www.youtube.com/embed/ANT3FXH5z1s?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
