@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="logo1.jpg">
-    <title>S3: Rebirth</title>
+    <title>S3 E3: Lettuce Crystal Search</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding-top: 10px;
-            background: linear-gradient(45deg,  
-                skyblue, 
-                deepskyblue, 
-                purple);
-            background-size: 100% 100%;  /* Reduced the background size */
-            background-attachment: fixed;  /* Keep the background fixed during scroll */
-            background-position: center center;
-            height: 100%;
-            margin: 0;
-            transition: background-position 0.5s ease-out; /* Smooth transition */
+            background-image: url('BGS/S3E3.png'); /* Background image for S1 E5 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            min-height: 100vh; /* Allow the content to exceed the viewport height */
             display: flex;
             flex-direction: column;
             justify-content: center; /* Vertically center the content */
@@ -27,16 +23,16 @@
             overflow: auto; /* Allow scrolling */
         }
 
+        /* Header with background box */
         h1 {
             background-color: rgba(0, 0, 0, 0.85);
             padding: 40px;
             border-radius: 15px;
             font-size: 62px; /* Larger font size */
-            margin-bottom: 50px;
+            margin-bottom: 20px;
             width: 80%;
             max-width: 1000px;
             text-transform: uppercase;
-            color: white;  /* Lightened text color */
             box-sizing: border-box; /* Include padding and border in width calculation */
         }
         .back-button {
@@ -88,13 +84,31 @@
         }
 
         .description {
-            font-size: 50px; /* Larger font size for description */
+            font-size: 38px; /* Larger font size for description */
             line-height: 1.5;
-            color: white; /* Lightened text color */
         }
 
         /* Fullscreen Video Overlay */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
+        /* Video Container */
+        .video-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Add shadow for visual depth */
+        }
 
         iframe {
             width: 100%;
@@ -102,6 +116,23 @@
             border-radius: 15px;
         }
 
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 30px; /* Larger close button */
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .close-button:hover {
+            background: darkred;
+        }
 
         /* For small screens (like mobile) */
         @media (max-width: 768px) {
@@ -116,6 +147,10 @@
                 width: 90%; /* Make the title box width more responsive */
             }
 
+            .watch-button {
+                padding: 20px 40px;
+                font-size: 30px;
+            }
 
             .text-container {
                 margin-top: 15px; /* Reduced top margin on mobile */
@@ -128,8 +163,21 @@
             }
         }
     </style>
-      <script>
-        function goBack() {
+    <script>
+      var videoSrc = "https://www.youtube.com/embed/ktKC9k0kTaU?autoplay=1";  // Store the original video source with autoplay
+
+      function openVideo() {
+          var iframe = document.getElementById("video-frame");
+          iframe.src = videoSrc;  // Restore the video source when opening
+          document.getElementById("video-overlay").style.display = "flex";
+      }
+
+      function closeVideo() {
+          document.getElementById("video-overlay").style.display = "none";
+          var iframe = document.getElementById("video-frame");
+          iframe.src = "";  // Stop the video when closing by removing the source
+      }
+      function goBack() {
             window.location.href = "index.html";
         }
     </script>
@@ -137,17 +185,25 @@
 <body>
     <button class="back-button" onclick="goBack()">←</button>
 
-    <h1>S3: Rebirth</h1>
+    <h1>S3 E3: Lettuce Crystal Search</h1>
+
+    <!-- Watch Button -->
+    <button class="watch-button" onclick="openVideo()">Watch Episode</button>
 
     <!-- Episode Description -->
     <div class="text-container">
         <div class="description">
-           <center> <p><strong>Season 3:</strong> The rebirth of the Lighting Master Thunder, has arrived. Thunder has been reborn by the blood moon and is set for revenge. <br> What will Thunder do now, and what about Axis? <br> Find out now in Shields!</p></center>
+           <center> <p><strong>Episode 3:</strong> Leonard flees to Terraria and begins his search for the 2nd Lettuce Crystal </center><center>Main Ai voice: Leonard; Other Ai voices: Others</center></p>
         </div>
     </div>
 
-    <!-- Full Episode Button -->
-   
+    <!-- Fullscreen Video Overlay -->
+    <div id="video-overlay" class="video-overlay">
+        <div class="video-content">
+            <button class="close-button" onclick="closeVideo()">✖</button>
+            <iframe id="video-frame" src="https://www.youtube.com/embed/ktKC9k0kTaU?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
 
 </body>
 </html>
