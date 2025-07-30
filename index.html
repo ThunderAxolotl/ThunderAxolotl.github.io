@@ -9,16 +9,15 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-image: url('background.png'); /* Changed background */
+      background-image: url('background.png');
       background-size: cover;
       background-position: center;
       color: white;
     }
 
-    /* Navigation Tabs */
     .navbar {
       display: flex;
-      background-color: red; /* Changed from #222 to red */
+      background-color: red;
       justify-content: center;
       padding: 10px 0;
       position: sticky;
@@ -92,7 +91,9 @@
   <div class="navbar">
     <button class="tab-button" onclick="openTab('infoTab')">Info</button>
     <button class="tab-button" onclick="openTab('chapter1Tab')">Chapter 1</button>
+    <button class="tab-button" onclick="openTab('chapter2Tab')">Chapter 2</button>
   </div>
+
 <center>
   <!-- Info Tab -->
   <div id="infoTab" class="tab-content active">
@@ -102,11 +103,13 @@
       All students have given me permission to use their face and quotes on them for the series, so worry not!
     </div>
     <p style="font-size: 70px; font-weight: bold;">??? -> It's Over, Chapter 1 <br> </p>
-  </div/
+  </div>
 </center>
-  <!-- Chapter 1 Tab --><center>
+
+<!-- Chapter 1 Tab -->
+<center>
   <div id="chapter1Tab" class="tab-content">
-<h1 class="season-label" style="color: rgb(76, 76, 236); font-size: 64px;">Chapter 1 - Fluvanna</h1><br>
+    <h1 class="season-label" style="color: rgb(76, 76, 236); font-size: 64px;">Chapter 1 - Fluvanna</h1><br>
     <div class="season-buttons">
       <h2 class="season-label">Season 1 - Limbo</h2>
       <div class="button-container">
@@ -131,22 +134,21 @@
         <a href="s2full.html"><button class="season-button">Full Vid</button></a>
       </div>
     </div>
+
     <div class="season-buttons">
       <h2 class="season-label">Season 3 - Rebirth</h2>
-       <a href="s3info.html"><button class="season-button">Info</button></a>
+      <a href="s3info.html"><button class="season-button">Info</button></a>
       <a href="s3e1.html"><button class="season-button">Episode 1</button></a>
-       <a href="s3e2.html"><button class="season-button">Episode 2</button></a>
-       <a href="s3e3.html"><button class="season-button">Episode 3</button></a>
+      <a href="s3e2.html"><button class="season-button">Episode 2</button></a>
+      <a href="s3e3.html"><button class="season-button">Episode 3</button></a>
       <a href="s3e4.html"><button class="season-button">Episode 4</button></a>
       <a href="s3e5.html"><button class="season-button">Episode 5</button></a>
-        <a href="s3full.html"><button class="season-button">Full Vid</button></a>
-
-
-      
+      <a href="s3full.html"><button class="season-button">Full Vid</button></a>
     </div>
+
     <div class="season-buttons">
       <h2 class="season-label">Season 4 - Ultimate Destruction</h2>
-       <a href="s4info.html"><button class="season-button">Info</button></a>
+      <a href="s4info.html"><button class="season-button">Info</button></a>
       <a href="s4e1.html"><button class="season-button">Episode 1</button></a>
       <a href="s4e2.html"><button class="season-button">Episode 2</button></a>
       <a href="s4e3.html"><button class="season-button">Episode 3</button></a>
@@ -155,9 +157,9 @@
       <a href="s4e6.html"><button class="season-button">Episode 6</button></a>
       <a href="s4e7.html"><button class="season-button">Episode 7</button></a>
       <a href="s4full.html"><button class="season-button">Full Vid</button></a>
-
     </div>
-<br>
+
+    <br>
     <div class="season-buttons">
       <div class="button-container">
         <a href="remixes.html"><button class="season-button">Special</button></a>
@@ -165,11 +167,21 @@
     </div>
   </div>
 </center>
-  <script>
-    function openTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-    }
-  </script>
+
+<!-- Chapter 2 Tab -->
+<center>
+  <div id="chapter2Tab" class="tab-content">
+    <h1 class="season-label" style="color: rgb(236, 174, 76); font-size: 64px;">Chapter 2</h1><br>
+    <p style="font-size: 36px;">Coming Soon... Either UVA or Online Friends...</p>
+  </div>
+</center>
+
+<script>
+  function openTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+  }
+</script>
+
 </body>
 </html>
