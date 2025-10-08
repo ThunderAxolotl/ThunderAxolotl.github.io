@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo1.jpg">
+    <title>S5 E1: Slabbed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 10px;
+            background-image: url('BGS/S5E1.png'); /* Path to background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 1);
+            color: white;
+            border: none;
+            font-size: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            color: black;
+        }
+
+        /* Header with background box */
+        h1 {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            font-size: 62px;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 1000px;
+            text-transform: uppercase;
+            box-sizing: border-box;
+        }
+
+        /* Button to open video */
+        .watch-button {
+            background-color: white;
+            color: black;
+            padding: 25px 50px;
+            font-size: 40px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            margin: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .watch-button:hover {
+            background-color: #ddd;
+        }
+
+        /* Text Box for the Description */
+        .text-container {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            width: fit-content;
+            max-width: 80%;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .description {
+            font-size: 38px;
+            line-height: 1.5;
+        }
+
+        /* Fullscreen Video Overlay */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Video Container */
+        .video-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border-radius: 15px;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .close-button:hover {
+            background: darkred;
+        }
+
+        /* For small screens (like mobile) */
+        @media (max-width: 768px) {
+            body {
+                min-height: auto;
+                padding-top: 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+                padding: 20px;
+                width: 90%;
+            }
+
+            .watch-button {
+                padding: 20px 40px;
+                font-size: 30px;
+            }
+
+            .text-container {
+                margin-top: 15px;
+            }
+
+            .back-button {
+                font-size: 24px;
+                padding: 8px 12px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+    <script>
+        var videoSrc = "https://www.youtube.com/embed/1QpjPVaDLKY?autoplay=1"; 
+
+        function openVideo() {
+            var iframe = document.getElementById("video-frame");
+            iframe.src = videoSrc;
+            document.getElementById("video-overlay").style.display = "flex";
+        }
+
+        function closeVideo() {
+            document.getElementById("video-overlay").style.display = "none";
+            var iframe = document.getElementById("video-frame");
+            iframe.src = "";
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <h1>S5 E1: Slabbed</h1>
+
+    <!-- Watch Button -->
+    <button class="watch-button" onclick="openVideo()">Watch Episode</button>
+
+    <!-- Episode Description -->
+    <div class="text-container">
+        <div class="description">
+            <p><strong><center>Episode 1:</strong> After the black hole of the fake finale, Thunder wakes up in a strange place, without his powers. <br>After escaping, he notices this kingdom is voided and needs to escape. </center></p>
+        </div>
+    </div>
+
+    <!-- Fullscreen Video Overlay -->
+    <div id="video-overlay" class="video-overlay">
+        <div class="video-content">
+            <button class="close-button" onclick="closeVideo()">✖</button>
+            <iframe id="video-frame" src="https://www.youtube.com/embed/1QpjPVaDLKY?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
