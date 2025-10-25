@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <title>Shields! - Fracture</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-image: url('background.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+    .page-overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      background: linear-gradient(90deg, #ff4b4b, #d40000);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border-bottom: 3px solid #fff;
+    }
+    .tab-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 40px;
+      margin: 0 20px;
+      cursor: pointer;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+    .tab-button:hover {
+      background-color: #444;
+      border-radius: 5px;
+      transform: scale(1.05);
+    }
+
+    /* Headings */
+    .season-label { font-size: 48px; font-weight: bold; margin-top: 30px; }
+
+    /* Button containers */
+    .button-container {
+      margin: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Buttons */
+    .season-button {
+      padding: 20px 40px;
+      font-size: 25px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      transition: all 0.3s ease;
+      color: white;
+    }
+    .season-button:hover {
+      filter: brightness(85%);
+      transform: scale(1.05);
+    }
+
+    /* Individual container colors */
+    .p1 .season-button { background-color: black; }
+    .special .season-button { background-color: darkgray; }
+
+    h1,h2,h3 { text-align: center; margin: 20px 0; }
+  </style>
+</head>
+<body>
+<div class="page-overlay">
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="tab-button" onclick="window.location.href='index.html'">Info</button>
+    <button class="tab-button" onclick="window.location.href='origins.html'">Origins</button>
+    <button class="tab-button" onclick="window.location.href='fracture.html'">Fracture</button>
+  </div>
+
+  <center>
+    <h1 class="season-label" style="color: rgb(255, 0, 0); font-size: 64px;">Arc: Fracture</h1><br>
+
+    <!-- Phase 1 -->
+        <div class="season-buttons">
+      <h2 class="season-label">Phase 1 - Collapse</h2>
+      <div class="button-container p1">
+        <a href="Arc2/P1/Info.html"><button class="season-button">Info</button></a>
+        <a href="Arc2/P1/e1.html"><button class="season-button">Episode 1</button></a>
+        <a href="Arc2/P1/e2.html"><button class="season-button">Episode 2</button></a>
+        <a href="Arc2/P1/e3.html"><button class="season-button">Episode 3</button></a>
+        <a href="Arc2/P1/e4.html"><button class="season-button">Episode 4</button></a>
+      <!--  <a href="Arc2/P1/e5.html"><button class="season-button">Episode 5</button></a>
+        <a href="Arc2/P1/e6.html"><button class="season-button">Episode 6</button></a>
+        <a href="Arc2/P1/Full.html"><button class="season-button">Full Phase</button></a>    -->
+      </div>
+    </div>
+
+    <!-- Special -->
+    <div class="season-buttons">
+      <h3 class="season-label">Special</h3>
+      <div class="button-container special">
+        <a href="Arc2/trailers.html"><button class="season-button">Trailers</button></a>
+        <a href="Arc2/remixes.html"><button class="season-button">Remixes</button></a>
+      </div>
+    </div>
+  </center>
+</div>
+</body>
+</html>
