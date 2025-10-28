@@ -7,18 +7,23 @@
   <title>Shields! - Info</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-image: url('background.png');
-      background-size: cover;
-      background-position: center;
-      color: white;
-    }
-  .page-overlay {
-      background-color: rgba(0, 0, 0, 0.4); /* subtle transparency */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* ✅ Keeps background still */
+  background-repeat: no-repeat;
+  color: white;
+}
+
+
+    .page-overlay {
+      background-color: rgba(0, 0, 0, 0.4);
       min-height: 100vh;
       padding-bottom: 50px;
     }
+
     .navbar {
       display: flex;
       justify-content: center;
@@ -42,7 +47,6 @@
     .tab-button:hover {
       background-color: rgba(255,255,255,0.2);
       border-radius: 5px;
-      transform: scale(1.05);
     }
 
     .info-container {
@@ -60,7 +64,7 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 30px;
       border-radius: 15px;
-      font-size: 30px; /* bigger text */
+      font-size: 30px;
     }
 
     .announcements-column {
@@ -70,7 +74,7 @@
       background-color: rgba(155, 0, 0, 0.8);
       padding: 30px;
       border-radius: 15px;
-      font-size: 30px; /* bigger text */
+      font-size: 30px;
     }
 
     p, li {
@@ -79,6 +83,40 @@
 
     ul {
       padding-left: 20px;
+    }
+
+    /* Accordion Styles */
+    .accordion-btn {
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 26px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .accordion-btn:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      padding-left: 10px;
+      opacity: 0;
+    }
+
+    .accordion-content.show {
+      opacity: 1;
+    }
+
+    .accordion-content ul {
+      margin-top: 10px;
+      padding-left: 25px;
     }
 
     @media screen and (max-width: 600px) {
@@ -99,7 +137,7 @@
   </style>
 </head>
 <body>
-  <div class="page-overlay"> <!-- Full page transparent background -->
+  <div class="page-overlay">
     <!-- Navbar -->
     <div class="navbar">
       <button class="tab-button" onclick="window.location.href='index.html'">Info</button>
@@ -116,19 +154,72 @@
           Expect many funny references to school, specific people in the series, and many more things guaranteed to make you laugh!<br><br>
           All participants have given permission to use their face and quotes, so no worries!
         </p>
+
+        <hr style="border: 1px solid rgba(255,255,255,0.3); margin: 30px 0;">
+
+        <h2 style="text-align: center;">Join the Group!</h2>
+        <p style="text-align: center;">
+          Want to see <strong>sneak peeks</strong>, updates, and announcements early?<br>
+        </p>
+        <p style="text-align: center;">
+          <a href="https://groupme.com/join_group/111158443/Qlpz8GyA" 
+             target="_blank" 
+             style="background-color:#ff4b4b; color:white; padding:10px 20px; 
+                    text-decoration:none; border-radius:10px; font-weight:bold;">
+            Join Shields GroupMe
+          </a>
+        </p>
       </div>
 
       <div class="announcements-column">
         <h2 style="text-align: center;">Announcements</h2>
-        <ul>
-          <li>10/9/25: Updated S1E3, Removed S4E4, Combined S4E3 Start and S4E5 Start into S4E3. S5E1 Drop.</li>
-          <li>10/11/25: Chapters are now called Arcs; Seasons are now called Phases. New Logo (Fixed on all pages). Redesigned Main Pages and Updating Old Ones (Took ~3h).</li>
-          <li>10/14/25: Fixed P3 E5 and P3 Full not working, Added P5 E2</li>
-          <li>10/17/25: P5 E3</li>
-          <li>10/26/25: P5 is now part of an extended Pre-uva Fracture; E5 and Mini Arc 2 Trailer</li>
-        </ul>
+
+        <div class="accordion">
+          <button class="accordion-btn">Phase 5 ▾</button>
+          <div class="accordion-content">
+            <ul>
+              <li>10/28/25: Resdesigned Home Page Layout, Added Shields Livestream URL, changed remixes to "Other"</li>
+              <li>10/26/25: P5 is now part of an extended Pre-UVA Fracture; E4/5 and Mini Arc 2 Trailer</li>
+              <li>10/17/25: P5 E3</li>
+              <li>10/14/25: Fixed P3 E5 and P3 Full not working, Added P5 E2</li>
+            </ul>
+          </div>
+          <button class="accordion-btn">Arc Update ▾</button>
+          <div class="accordion-content">
+            <ul>
+              <li>10/11/25: Chapters are now called Arcs; Seasons are now called Phases. New Logo (Fixed on all pages). Redesigned Main Pages and Updating Old Ones (Took ~3h).</li>
+              <li>10/9/25: Updated S1E3, Removed S4E4, Combined S4E3 Start and S4E5 Start into S4E3. S5E1 Drop.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.accordion-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const isOpen = content.style.maxHeight;
+
+        // close all
+        document.querySelectorAll('.accordion-content').forEach(c => {
+          c.style.maxHeight = null;
+          c.classList.remove('show');
+        });
+        document.querySelectorAll('.accordion-btn').forEach(b => {
+          b.innerHTML = b.innerHTML.replace('▴', '▾');
+        });
+
+        // open selected if it was closed
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.classList.add('show');
+          btn.innerHTML = btn.innerHTML.replace('▾', '▴');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
