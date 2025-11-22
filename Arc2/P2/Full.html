@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../logo.png" />
+    <title>P2: FULL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('Full.png'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Large Watch Button */
+        .watch-button {
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 50px 100px; /* Larger button size */
+            font-size: 100px; /* Larger font size */
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .watch-button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Back Button (Top-right, Circular with thicker arrow) */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 1);
+            color: white;
+            border: none;
+            font-size: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Fullscreen Video Overlay */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Video Container */
+        .video-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Add shadow for visual depth */
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border-radius: 15px;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 30px; /* Larger close button */
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .close-button:hover {
+            background: darkred;
+        }
+
+        /* Secret Button (Barely Visible) */
+        .secret-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.1); /* Barely visible */
+            color: rgba(255, 255, 255, 0.1); /* Almost invisible text */
+            border: none;
+            font-size: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .secret-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+    </style>
+    <script>
+        var videoSrc = "https://www.youtube.com/embed/1-xoLwPa-XE?autoplay=1";  // Video source with autoplay enabled
+        var videoOpened = false; // Track if the video has been opened and closed
+
+        function openVideo() {
+            var iframe = document.getElementById("video-frame");
+            iframe.src = videoSrc;  // Start the video
+            document.getElementById("video-overlay").style.display = "flex";  // Show the overlay
+        }
+
+        function closeVideo() {
+            document.getElementById("video-overlay").style.display = "none";  // Hide the overlay
+            var iframe = document.getElementById("video-frame");
+            iframe.src = "";  // Stop the video by clearing the source
+
+            if (videoOpened) {
+                showSecretButton();  // Show the secret button if the video was opened and closed
+            }
+            videoOpened = !videoOpened;  // Toggle the flag
+        }
+
+        function showSecretButton() {
+            var secretButton = document.getElementById("secret-button");
+            secretButton.style.display = "block";  // Show the secret button
+
+            // Hide it after 3 seconds
+            setTimeout(function() {
+                secretButton.style.display = "none";  // Hide the secret button
+            }, 3000);
+        }
+
+        function goBack() {
+            window.location.href = "../../fracture.html";  // Go back to the main page
+        }
+    </script>
+</head>
+<body>
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <!-- Large Watch Button -->
+    <button class="watch-button" onclick="openVideo()">Watch Episode</button>
+    
+    <!-- Secret Button (Barely Visible) -->
+    <button id="secret-button" class="secret-button" onclick="window.location.href='hehe.html'">!</button>
+
+    <!-- Fullscreen Video Overlay -->
+    <div id="video-overlay" class="video-overlay" onclick="closeVideo()">
+        <div class="video-content" onclick="event.stopPropagation();">  <!-- Prevents closing when clicking inside -->
+            <button class="close-button" onclick="closeVideo()">✖</button>
+            <iframe id="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html>
