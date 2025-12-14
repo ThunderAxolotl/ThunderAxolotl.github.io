@@ -20,6 +20,29 @@
       padding-bottom: 50px;
     }
 
+    /* Secret Button Styling */
+    .secret-button {
+      position: absolute; /* Allows for top/right positioning */
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: rgba(255, 255, 255, 0.1); /* Slightly visible white/transparent */
+      color: rgba(255, 255, 255, 0.4); /* Faint text color */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      font-size: 12px;
+      text-decoration: none; /* Remove underline from anchor */
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 1000; /* Ensure it's on top of other elements */
+    }
+
+    .secret-button:hover {
+      background-color: rgba(255, 0, 0, 0.7); /* Red on hover */
+      color: white;
+      border-color: white;
+    }
+
     /* Navbar */
     .navbar {
       display: flex;
@@ -84,9 +107,10 @@
   </style>
 </head>
 <body>
+<a href="countdown.html" class="secret-button">?</a>
+
 <div class="page-overlay">
 
-  <!-- Navbar -->
   <div class="navbar">
     <button class="tab-button" onclick="window.location.href='index.html'">Info</button>
     <button class="tab-button" onclick="window.location.href='origins.html'">Origins</button>
@@ -96,8 +120,7 @@
   <center>
     <h1 class="season-label" style="color: rgb(255, 0, 0); font-size: 64px;">Arc: Fracture</h1><br>
 
-    <!-- Phase 1 -->
-        <div class="season-buttons">
+    <div class="season-buttons">
       <h2 class="season-label">Phase 1 - Collapse</h2>
       <div class="button-container p1">
         <a href="Arc2/P1/Info.html"><button class="season-button">Info</button></a>
@@ -107,7 +130,7 @@
         <a href="Arc2/P1/e4.html"><button class="season-button">Episode 4</button></a>
         <a href="Arc2/P1/e5.html"><button class="season-button">Episode 5</button></a>
         <a href="Arc2/P1/e6.html"><button class="season-button">Episode 6</button></a>
-        <a href="Arc2/P1/Full.html"><button class="season-button">Full Phase</button></a>  
+        <a href="Arc2/P1/Full.html"><button class="season-button">Full Phase</button></a>
       </div>
     </div>
 
@@ -118,13 +141,9 @@
         <a href="Arc2/P2/e1.html"><button class="season-button">Episode 1</button></a>
         <a href="Arc2/P2/e2.html"><button class="season-button">Episode 2</button></a>
         <a href="Arc2/P2/e3.html"><button class="season-button">Episode 3</button></a>
-       <!-- <a href="Arc2/P2/e4.html"><button class="season-button">Episode 4</button></a>
-        <a href="Arc2/P2/e5.html"><button class="season-button">Episode 5</button></a>
-        <a href="Arc2/P2/Full.html"><button class="season-button">Full Phase</button></a>  -->
-      </div>
+       </div>
     </div>
 
-    <!-- Special -->
     <div class="season-buttons">
       <h3 class="season-label">Special</h3>
       <div class="button-container special">
